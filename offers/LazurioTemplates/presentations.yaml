@@ -1,10 +1,7 @@
-# Presentations, the pilot offer Lazurio carried in its own code
-# (LazurioPlatform src/launchpad/marketplace.ts, plan DEV-6593), the third
-# template of the Marketplace. It moved from TemplatesRozjedeme-ai with a clean
-# history and is published by LazurioTemplates (decided 2026-11-03). Release
-# 0.1.0 is prepared in LazurioTemplates/presentations#1; the repository is
-# private and not tagged yet, so the commit stays null and Lazurio does not
-# show the offer.
+# Presentations, the pilot offer Lazurio carried in its own code (plan DEV-6593),
+# the third template of the Marketplace. It moved from TemplatesRozjedeme-ai with a
+# clean history and is published by LazurioTemplates (decided 2026-11-03).
+# Release 0.1.0 was published on 2026-11-03 as the annotated tag v0.1.0.
 schemaVersion: lazurio.marketplace.offer.v1
 id: presentations
 section: app-templates
@@ -76,5 +73,5 @@ releases:
     stackProfile: app@2026.11
     stack: vite-react
     bun: 1.4.4
-    commit: null
+    commit: 4b023772fbe45c2209b6eb1ff44009239ed1ac99
     artifactDigest: null

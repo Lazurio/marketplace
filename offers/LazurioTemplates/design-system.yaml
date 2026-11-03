@@ -1,9 +1,6 @@
-# The design system with an invented brand, Example: the second template of
-# the Marketplace (order decided 2026-11-03), published by LazurioTemplates
-# with a fresh history from LazurioExampleOrganization/design-system#7.
-# Release 1.0.0 stays generation app/v1 on the stack profile content and is
-# prepared in LazurioTemplates/design-system#1; the repository is private and
-# not tagged yet, so the commit stays null and Lazurio does not show the offer.
+# Design System, the second template of the Marketplace (plan DEV-6593), published by
+# LazurioTemplates with a clean history (decided 2026-11-03). Release 1.0.0 was
+# published on 2026-11-03 as the annotated tag v1.0.0.
 schemaVersion: lazurio.marketplace.offer.v1
 id: design-system
 section: app-templates
@@ -79,5 +76,5 @@ releases:
     stackProfile: content@2026.11
     stack: astro
     bun: 1.4.4
-    commit: null
+    commit: fc64dc06b563587b215481c9d54b41f0d045aba8
     artifactDigest: null
