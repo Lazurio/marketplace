@@ -41,6 +41,21 @@ features:
     text:
       cs: Řekněte agentovi, komu je prezentace určená a z čeho má vycházet. Navrhne osnovu, připraví slidy z podkladů vaší Organizace a dá vám je ke kontrole.
       en: Tell the agent who the presentation is for and what it should draw on. It proposes an outline, drafts the slides from your Organization's sources and hands them to you for review.
+seeds:
+  empty:
+    label:
+      cs: Prázdnou knihovnou
+      en: An empty library
+    brief:
+      cs: prázdnou knihovnou (ukázkovou prezentaci nepřenášej)
+      en: an empty library (do not carry the example presentation over)
+  sample:
+    label:
+      cs: Ukázkovou prezentací
+      en: An example presentation
+    brief:
+      cs: ukázkovou prezentací z vydání
+      en: the example presentation from the release
 screenshots: []
 releases:
   - version: 0.1.0

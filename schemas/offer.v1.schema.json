@@ -21,6 +21,7 @@
     "pricing",
     "summary",
     "features",
+    "seeds",
     "screenshots",
     "releases"
   ],
@@ -105,6 +106,20 @@
           "text": {
             "$ref": "#/$defs/paragraph"
           }
+        }
+      }
+    },
+    "seeds": {
+      "description": "How an adopted module may start: empty always, sample when the release carries an invented example. The label is the dialog's choice; the brief completes the person's own words to the agent \"Start with …\" (in Czech the informal ty).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["empty"],
+      "properties": {
+        "empty": {
+          "$ref": "#/$defs/seed"
+        },
+        "sample": {
+          "$ref": "#/$defs/seed"
         }
       }
     },
@@ -238,6 +253,19 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 280
+        }
+      }
+    },
+    "seed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "brief"],
+      "properties": {
+        "label": {
+          "$ref": "#/$defs/label"
+        },
+        "brief": {
+          "$ref": "#/$defs/line"
         }
       }
     }

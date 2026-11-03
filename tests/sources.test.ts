@@ -27,6 +27,7 @@ const offer = (overrides: Partial<Offer> = {}): Offer => ({
   pricing: "free",
   summary: text,
   features: [{ title: text, text }],
+  seeds: { empty: { label: text, brief: text } },
   screenshots: [{ path: "docs/screens/a.webp", alt: text }],
   releases: [{ version: "1.0.0", tag: "v1.0.0", commit, artifactDigest: null }],
   ...overrides,

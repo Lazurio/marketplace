@@ -28,6 +28,7 @@ const offer = (overrides: Record<string, unknown> = {}) => ({
   pricing: "free",
   summary: text,
   features: [{ title: text, text }],
+  seeds: { empty: { label: text, brief: text } },
   screenshots: [],
   releases: [
     { version: "0.1.0", tag: "v0.1.0", commit: null, artifactDigest: null },

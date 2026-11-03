@@ -51,6 +51,28 @@
           }
         }
       ],
+      "seeds": {
+        "empty": {
+          "label": {
+            "cs": "Bez plánů",
+            "en": "No plans"
+          },
+          "brief": {
+            "cs": "prázdnými daty (ukázkové plány nepřenášej)",
+            "en": "empty data (do not carry the example plans over)"
+          }
+        },
+        "sample": {
+          "label": {
+            "cs": "S ukázkovými plány",
+            "en": "With example plans"
+          },
+          "brief": {
+            "cs": "ukázkovými plány z vydání",
+            "en": "the example plans from the release"
+          }
+        }
+      },
       "screenshots": [],
       "releases": [
         {
@@ -112,6 +134,28 @@
           }
         }
       ],
+      "seeds": {
+        "empty": {
+          "label": {
+            "cs": "Prázdnou knihovnou",
+            "en": "An empty library"
+          },
+          "brief": {
+            "cs": "prázdnou knihovnou (ukázkovou prezentaci nepřenášej)",
+            "en": "an empty library (do not carry the example presentation over)"
+          }
+        },
+        "sample": {
+          "label": {
+            "cs": "Ukázkovou prezentací",
+            "en": "An example presentation"
+          },
+          "brief": {
+            "cs": "ukázkovou prezentací z vydání",
+            "en": "the example presentation from the release"
+          }
+        }
+      },
       "screenshots": [],
       "releases": [
         {

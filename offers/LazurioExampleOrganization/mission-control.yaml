@@ -37,6 +37,21 @@ features:
     text:
       cs: Plány a úkoly leží v datovém repozitáři vaší Organizace. Agent je čte a zapisuje stejně jako vy.
       en: Plans and tasks live in your Organization's data repository. Your agent reads and writes them as you do.
+seeds:
+  empty:
+    label:
+      cs: Bez plánů
+      en: No plans
+    brief:
+      cs: prázdnými daty (ukázkové plány nepřenášej)
+      en: empty data (do not carry the example plans over)
+  sample:
+    label:
+      cs: S ukázkovými plány
+      en: With example plans
+    brief:
+      cs: ukázkovými plány z vydání
+      en: the example plans from the release
 screenshots: []
 releases:
   - version: 0.1.0

@@ -10,6 +10,8 @@ import offerSchema from "../schemas/offer.v1.schema.json";
 
 export type Localized = Readonly<{ cs: string; en: string }>;
 
+export type Seed = Readonly<{ label: Localized; brief: Localized }>;
+
 export type Release = Readonly<{
   version: string;
   tag: string;
@@ -34,6 +36,7 @@ export type Offer = Readonly<{
   pricing: "free";
   summary: Localized;
   features: readonly Readonly<{ title: Localized; text: Localized }>[];
+  seeds: Readonly<{ empty: Seed; sample?: Seed }>;
   screenshots: readonly Readonly<{ path: string; alt: Localized }>[];
   releases: readonly Release[];
 }>;
@@ -189,6 +192,11 @@ const localized = (text: Localized): Localized => ({
   en: text.en,
 });
 
+const seed = (value: Seed): Seed => ({
+  label: localized(value.label),
+  brief: localized(value.brief),
+});
+
 /** One offer with its keys in the schema's order, so the index does not
  * depend on how a file was written. */
 function canonical(offer: Offer): Offer {
@@ -212,6 +220,12 @@ function canonical(offer: Offer): Offer {
       title: localized(feature.title),
       text: localized(feature.text),
     })),
+    seeds: {
+      empty: seed(offer.seeds.empty),
+      ...(offer.seeds.sample === undefined
+        ? {}
+        : { sample: seed(offer.seeds.sample) }),
+    },
     screenshots: offer.screenshots.map((screenshot) => ({
       path: screenshot.path,
       alt: localized(screenshot.alt),
