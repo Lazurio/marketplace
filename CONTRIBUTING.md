@@ -52,8 +52,8 @@ git rev-parse 'v0.1.0^{commit}'   # the full commit for the offer
 
 Add `offers/<publisher>/<id>.yaml`, where `<publisher>` owns the repository and
 `<id>` is unique in the registry. Lazurio lists its own templates the same
-way, from its own repositories (`offers/Lazurio/`). Copy an existing offer as a start; the schema
-is `schemas/offer.v1.schema.json`. Then:
+way, from its own repositories (`offers/Lazurio/`). Copy an existing offer as
+a start; the schema is `schemas/offer.v1.schema.json`. Then:
 
 ```sh
 bun install
