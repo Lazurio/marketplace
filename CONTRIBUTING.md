@@ -62,9 +62,10 @@ Commit the offer and `index.json` together. The card's words come in Czech and
 English: one line (`summary`) and up to four features. Say plainly what the app
 does; no superlatives, ratings or promises.
 
-A new release of a listed template is a pull request that adds it at the top
-of `releases` with its commit and updates `generation`, `bun` and
-`screenshots` when they changed.
+Each release names its own `generation`, `stack` and `bun`. A new release of a
+listed template is a pull request that adds it at the top of `releases` with
+its commit and those three, and updates `screenshots` when the app looks
+different. The offer shows in Lazurio once a release has its commit.
 
 ## 4. Curator review
 

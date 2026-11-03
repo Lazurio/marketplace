@@ -14,9 +14,6 @@
     "repository",
     "publisher",
     "license",
-    "generation",
-    "stack",
-    "bun",
     "stone",
     "pricing",
     "summary",
@@ -63,20 +60,6 @@
       "description": "SPDX identifier of the template's license, as GitHub detects it in the release.",
       "type": "string",
       "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]*$"
-    },
-    "generation": {
-      "description": "The app generation of the offered release, app/v<N>; it names the data layer, not quality.",
-      "type": "string",
-      "pattern": "^app/v[1-9][0-9]*$"
-    },
-    "stack": {
-      "description": "The stack the scaffold creates (lazurio module create --stack).",
-      "$ref": "#/$defs/slug"
-    },
-    "bun": {
-      "description": "The exact Bun the template pins (packageManager bun@x.y.z).",
-      "type": "string",
-      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
     },
     "stone": {
       "description": "The stone the adopted module shows in Apps; Lazurio shows its default stone for a key it does not know.",
@@ -143,7 +126,7 @@
       }
     },
     "releases": {
-      "description": "The releases, newest first. Lazurio offers the newest release whose commit is recorded; while none has one, the offer cannot be adopted.",
+      "description": "The releases, newest first. Lazurio shows an offer only once a release has its commit recorded, and offers the newest such release; an offer whose releases all lack one is announced here, not shown.",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -164,7 +147,15 @@
     "release": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["version", "tag", "commit", "artifactDigest"],
+      "required": [
+        "version",
+        "tag",
+        "generation",
+        "stack",
+        "bun",
+        "commit",
+        "artifactDigest"
+      ],
       "properties": {
         "version": {
           "description": "Semantic version of the release, independent of the app generation.",
@@ -175,6 +166,20 @@
           "description": "The annotated tag of the release, v<version>.",
           "type": "string",
           "pattern": "^v"
+        },
+        "generation": {
+          "description": "The app generation of this release, app/v<N>; it names the data layer, not quality. A generation transition is a release.",
+          "type": "string",
+          "pattern": "^app/v[1-9][0-9]*$"
+        },
+        "stack": {
+          "description": "The stack the scaffold creates for this release (lazurio module create --stack).",
+          "$ref": "#/$defs/slug"
+        },
+        "bun": {
+          "description": "The exact Bun this release pins (packageManager bun@x.y.z); a release of the stack profile changes it.",
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
         },
         "commit": {
           "description": "The full commit the tag points to; null until the release is published. A tag alone is not an immutable identity.",

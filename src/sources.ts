@@ -2,8 +2,9 @@ import { type Offer, offeredRelease } from "./registry";
 
 // The registry's online rules: what the template's repository holds at the
 // release an offer names. An offer whose releases have no commit yet is
-// announced, not adoptable: its repository may not exist or be public yet,
-// and only a license GitHub already sees in a public one is checked.
+// announced, and Lazurio does not show it: its repository may not exist or be
+// public yet, and only a license GitHub already sees in a public one is
+// checked; a license still missing there is a note.
 
 /** One GET of the GitHub REST API, a path such as /repos/o/r, answering the
  * status and the body as bytes (the raw media type for contents). */
@@ -71,7 +72,7 @@ export async function verifySources(
   if (repository.status !== 200) {
     if (release.commit === null)
       notes.push(
-        `${offer.repository} is not reachable yet (${repository.status}); the offer stays unadoptable`,
+        `${offer.repository} is not reachable yet (${repository.status}); Lazurio does not show the offer yet`,
       );
     else problems.push(`${offer.repository} answers ${repository.status}`);
     return { offer: offer.id, problems, notes };
@@ -93,7 +94,9 @@ export async function verifySources(
     license.status === 200
       ? record(record(json(license.body))?.license)?.spdx_id
       : null;
-  if (spdx !== offer.license)
+  if (ref === null && (spdx === null || spdx === undefined))
+    notes.push(`GitHub detects no license in ${offer.repository} yet`);
+  else if (spdx !== offer.license)
     problems.push(
       `GitHub detects license ${String(spdx ?? "none")}, the offer says ${offer.license}`,
     );
@@ -140,7 +143,7 @@ export async function verifySources(
 
   // lazurio.module.json and the offered generation's app, as the Module
   // Standard of LazurioPlatform (docs/module-standard.md) requires them.
-  const app = `${offer.generation}/package.json`;
+  const app = `${release.generation}/package.json`;
   const manifest = await jsonFile("lazurio.module.json");
   if (manifest === null)
     problems.push(`lazurio.module.json is missing or not JSON at ${ref}`);
@@ -158,9 +161,9 @@ export async function verifySources(
   const pkg = await jsonFile(app);
   if (pkg === null) problems.push(`${app} is missing or not JSON at ${ref}`);
   else {
-    if (pkg.packageManager !== `bun@${offer.bun}`)
+    if (pkg.packageManager !== `bun@${release.bun}`)
       problems.push(
-        `${app} pins ${String(pkg.packageManager)}, the offer bun@${offer.bun}`,
+        `${app} pins ${String(pkg.packageManager)}, the release bun@${release.bun}`,
       );
     const lazurio = record(pkg.lazurio);
     if (record(lazurio?.runtime)?.schema_version !== "lazurio.runtime.v1")
@@ -169,8 +172,8 @@ export async function verifySources(
       problems.push(`${app} has no lazurio.preparation`);
     if (typeof record(pkg.scripts)?.check !== "string")
       problems.push(`${app} has no check script`);
-    if ((await file(`${offer.generation}/bun.lock`)).status !== 200)
-      problems.push(`${offer.generation}/bun.lock is missing at ${ref}`);
+    if ((await file(`${release.generation}/bun.lock`)).status !== 200)
+      problems.push(`${release.generation}/bun.lock is missing at ${ref}`);
   }
 
   for (const screenshot of offer.screenshots) {

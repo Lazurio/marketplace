@@ -22,15 +22,21 @@ to the person's agent, who follows the release's own `docs/adoption.md`.
 An offer lists its releases newest first. Each names its annotated tag
 `v<version>` and the full commit the tag points to; a tag alone is not an
 immutable identity. A release whose commit is still `null` is announced, not
-published: Lazurio shows the offer but it cannot be adopted. Lazurio offers the
-newest release whose commit is recorded. `artifactDigest` is reserved for the
-digest of an attested release artifact.
+published, and Lazurio does not show an offer until one of its releases has a
+commit. Lazurio offers the newest release whose commit is recorded.
+`artifactDigest` is reserved for the digest of an attested release artifact.
 
-`generation` (`app/v<N>`) is the offered release's app generation. It names
-the data layer, not quality: v1 and v2 have no data of their own, v3 keeps
-data in repository-db, v4 in a Dolt database on the Organization's server, v5
-in a Dolt database hosted outside it. The release version (semver) is
-independent of the generation.
+Each release also says what it is built on, because a release can change it:
+
+- `generation` (`app/v<N>`) is the app generation, which names the data
+  layer, not quality: v1 and v2 have no data of their own, v3 keeps data in
+  repository-db, v4 in a Dolt database (on the Organization's server or
+  hosted outside it, a setting of v4). A generation transition is a release.
+- `stack` is the stack the scaffold creates (`lazurio module create --stack`).
+- `bun` is the exact Bun the release pins; a release of the template's stack
+  profile changes it.
+
+The release version (semver) is independent of the generation.
 
 `pricing` is reserved for paid templates; `free` is its only value.
 

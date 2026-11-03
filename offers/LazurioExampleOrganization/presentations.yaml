@@ -1,10 +1,9 @@
-# Presentations, the pilot offer Lazurio has carried in its own code
-# (LazurioPlatform src/launchpad/marketplace.ts, plan DEV-6593). The template
-# moves from TemplatesRozjedeme-ai/Presentations to LazurioExampleOrganization
-# with a clean history (decided 2026-11-03); the new repository does not exist
-# yet. Release 0.1.0 was never published, so the commit stays null and the
-# offer cannot be adopted. The screens Lazurio bundles today move into the
-# template's repository with the release and are listed here then.
+# Presentations, the pilot offer Lazurio carried in its own code
+# (LazurioPlatform src/launchpad/marketplace.ts, plan DEV-6593), the third
+# template of the Marketplace. It moved to LazurioExampleOrganization with a
+# clean history (decided 2026-11-03). Release 0.1.0 is prepared in
+# LazurioExampleOrganization/presentations#1; it is not tagged yet, so the
+# commit stays null and Lazurio does not show the offer.
 schemaVersion: lazurio.marketplace.offer.v1
 id: presentations
 section: app-templates
@@ -12,11 +11,7 @@ title: Presentations
 module: presentations
 repository: LazurioExampleOrganization/presentations
 publisher: LazurioExampleOrganization
-movedFrom: TemplatesRozjedeme-ai/Presentations
 license: MIT
-generation: app/v1
-stack: vite-react
-bun: 1.4.2
 stone: presentation
 pricing: free
 summary:
@@ -56,9 +51,28 @@ seeds:
     brief:
       cs: ukázkovou prezentací z vydání
       en: the example presentation from the release
-screenshots: []
+screenshots:
+  - path: docs/screenshots/library.webp
+    alt:
+      cs: Knihovna s náhledem prvního slidu ukázkové prezentace
+      en: The library with the first-slide preview of the example presentation
+  - path: docs/screenshots/detail.webp
+    alt:
+      cs: Detail prezentace s jejím účelem a podklady
+      en: A presentation's detail with its purpose and sources
+  - path: docs/screenshots/agent-brief.webp
+    alt:
+      cs: Zadání pro agenta k nové prezentaci
+      en: The brief for your agent to create a presentation
+  - path: docs/screenshots/slide.webp
+    alt:
+      cs: Slide ukázkové prezentace při promítání
+      en: A slide of the example presentation while presenting
 releases:
   - version: 0.1.0
     tag: v0.1.0
+    generation: app/v1
+    stack: vite-react
+    bun: 1.4.4
     commit: null
     artifactDigest: null

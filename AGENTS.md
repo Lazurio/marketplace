@@ -21,4 +21,4 @@ Read `README.md` and `CONTRIBUTING.md` first.
   credentials or private repository names. Words in Czech and English, plain
   and true.
 - Keep the tooling minimal: Bun, TypeScript, Biome and ajv. The stack profiles
-  of the templates are still being chosen; do not add a framework here.
+  are for the templates, not for this registry; do not add a framework here.

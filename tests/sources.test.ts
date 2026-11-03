@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import type { Offer } from "../src/registry";
+import type { Offer, Release } from "../src/registry";
 import {
   type GitHub,
   requiredFiles,
@@ -11,6 +11,17 @@ const commit = "c".repeat(40);
 const tagSha = "d".repeat(40);
 const text = { cs: "Text", en: "Text" };
 
+const release = (overrides: Partial<Release> = {}): Release => ({
+  version: "1.0.0",
+  tag: "v1.0.0",
+  generation: "app/v3",
+  stack: "vite-react",
+  bun: "1.4.4",
+  commit,
+  artifactDigest: null,
+  ...overrides,
+});
+
 const offer = (overrides: Partial<Offer> = {}): Offer => ({
   schemaVersion: "lazurio.marketplace.offer.v1",
   id: "notes",
@@ -20,16 +31,13 @@ const offer = (overrides: Partial<Offer> = {}): Offer => ({
   repository: "Example/notes",
   publisher: "Example",
   license: "MIT",
-  generation: "app/v3",
-  stack: "vite-react",
-  bun: "1.4.2",
   stone: "book",
   pricing: "free",
   summary: text,
   features: [{ title: text, text }],
   seeds: { empty: { label: text, brief: text } },
   screenshots: [{ path: "docs/screens/a.webp", alt: text }],
-  releases: [{ version: "1.0.0", tag: "v1.0.0", commit, artifactDigest: null }],
+  releases: [release()],
   ...overrides,
 });
 
@@ -64,7 +72,7 @@ function repository(replace: Record<string, unknown> = {}): GitHub {
       default_app: "app/v3/package.json",
     },
     [`${repo}/contents/app/v3/package.json?ref=${commit}`]: {
-      packageManager: "bun@1.4.2",
+      packageManager: "bun@1.4.4",
       scripts: { check: "bun run typecheck" },
       lazurio: {
         runtime: { schema_version: "lazurio.runtime.v1" },
@@ -108,9 +116,7 @@ describe("an offer's sources", () => {
 
   test("an announced offer only notes a missing repository", async () => {
     const pending = offer({
-      releases: [
-        { version: "0.1.0", tag: "v0.1.0", commit: null, artifactDigest: null },
-      ],
+      releases: [release({ version: "0.1.0", tag: "v0.1.0", commit: null })],
     });
     const report = await verifySources(
       pending,
@@ -118,6 +124,34 @@ describe("an offer's sources", () => {
     );
     expect(report.problems).toEqual([]);
     expect(report.notes).toHaveLength(1);
+  });
+
+  test("an announced offer notes a missing license and fails another one", async () => {
+    const pending = offer({ releases: [release({ commit: null })] });
+    const missing = await verifySources(pending, repository());
+    expect(missing.problems).toEqual([]);
+    expect(missing.notes).toContain(
+      "GitHub detects no license in Example/notes yet",
+    );
+    const other = await verifySources(
+      pending,
+      repository({
+        "/repos/Example/notes/license": { license: { spdx_id: "GPL-3.0" } },
+      }),
+    );
+    expect(other.problems).toEqual([
+      "GitHub detects license GPL-3.0, the offer says MIT",
+    ]);
+  });
+
+  test("a released offer fails without a license", async () => {
+    const report = await verifySources(
+      offer(),
+      repository({ [`/repos/Example/notes/license?ref=${commit}`]: null }),
+    );
+    expect(report.problems).toEqual([
+      "GitHub detects license none, the offer says MIT",
+    ]);
   });
 
   test("a lightweight tag or one at another commit fails", async () => {
@@ -153,9 +187,9 @@ describe("an offer's sources", () => {
     ]);
   });
 
-  test("the offered generation must be the module's default app", async () => {
+  test("the offered release's generation must be the default app", async () => {
     const report = await verifySources(
-      offer({ generation: "app/v4" }),
+      offer({ releases: [release({ generation: "app/v4" })] }),
       repository(),
     );
     expect(report.problems).toContain(
@@ -163,11 +197,32 @@ describe("an offer's sources", () => {
     );
   });
 
-  test("the app pins the offer's Bun", async () => {
-    const report = await verifySources(offer({ bun: "1.4.3" }), repository());
+  test("the app pins the offered release's Bun", async () => {
+    const report = await verifySources(
+      offer({ releases: [release({ bun: "1.4.5" })] }),
+      repository(),
+    );
     expect(report.problems).toEqual([
-      "app/v3/package.json pins bun@1.4.2, the offer bun@1.4.3",
+      "app/v3/package.json pins bun@1.4.4, the release bun@1.4.5",
     ]);
+  });
+
+  test("an older release's generation and Bun do not matter", async () => {
+    const report = await verifySources(
+      offer({
+        releases: [
+          release(),
+          release({
+            version: "0.9.0",
+            tag: "v0.9.0",
+            generation: "app/v1",
+            bun: "1.4.2",
+          }),
+        ],
+      }),
+      repository(),
+    );
+    expect(report.problems).toEqual([]);
   });
 
   test("a screenshot is a 1600 px WebP", async () => {

@@ -12,6 +12,18 @@ import {
 
 const text = { cs: "Text", en: "Text" };
 
+/** A release of the generation, stack and Bun a test does not care about. */
+const release = (version: string, overrides: Record<string, unknown> = {}) => ({
+  version,
+  tag: `v${version}`,
+  generation: "app/v1",
+  stack: "vite-react",
+  bun: "1.4.4",
+  commit: null,
+  artifactDigest: null,
+  ...overrides,
+});
+
 const offer = (overrides: Record<string, unknown> = {}) => ({
   schemaVersion: "lazurio.marketplace.offer.v1",
   id: "notes",
@@ -21,18 +33,13 @@ const offer = (overrides: Record<string, unknown> = {}) => ({
   repository: "Example/notes",
   publisher: "Example",
   license: "MIT",
-  generation: "app/v1",
-  stack: "vite-react",
-  bun: "1.4.2",
   stone: "book",
   pricing: "free",
   summary: text,
   features: [{ title: text, text }],
   seeds: { empty: { label: text, brief: text } },
   screenshots: [],
-  releases: [
-    { version: "0.1.0", tag: "v0.1.0", commit: null, artifactDigest: null },
-  ],
+  releases: [release("0.1.0")],
   ...overrides,
 });
 
@@ -55,14 +62,7 @@ describe("one offer", () => {
     expect(
       messages(
         offer({
-          releases: [
-            {
-              version: "0.1.0",
-              tag: "v0.1.0",
-              commit: "abc123",
-              artifactDigest: null,
-            },
-          ],
+          releases: [release("0.1.0", { commit: "abc123" })],
         }),
       ),
     ).not.toEqual([]);
@@ -72,9 +72,33 @@ describe("one offer", () => {
     expect(messages(offer({ summary: { cs: "Jen česky" } }))).not.toEqual([]);
   });
 
-  test("the generation is app/v<N>", () => {
-    expect(messages(offer({ generation: "app/v0" }))).not.toEqual([]);
-    expect(messages(offer({ generation: "v3" }))).not.toEqual([]);
+  test("a release names its generation app/v<N>, its stack and its Bun", () => {
+    const one = (overrides: Record<string, unknown>) =>
+      offer({ releases: [release("0.1.0", overrides)] });
+    expect(messages(one({ generation: "app/v0" }))).not.toEqual([]);
+    expect(messages(one({ generation: "v3" }))).not.toEqual([]);
+    expect(messages(one({ bun: "1.4" }))).not.toEqual([]);
+    expect(messages(one({ stack: "Vite React" }))).not.toEqual([]);
+    expect(messages(one({ generation: undefined }))).not.toEqual([]);
+  });
+
+  test("the offer itself names no generation, stack or Bun", () => {
+    expect(messages(offer({ generation: "app/v1" }))).not.toEqual([]);
+    expect(messages(offer({ bun: "1.4.4" }))).not.toEqual([]);
+    expect(messages(offer({ stack: "vite-react" }))).not.toEqual([]);
+  });
+
+  test("releases may change the generation and the Bun", () => {
+    expect(
+      messages(
+        offer({
+          releases: [
+            release("2.0.0", { generation: "app/v3", bun: "1.4.4" }),
+            release("1.0.0", { generation: "app/v1", bun: "1.4.2" }),
+          ],
+        }),
+      ),
+    ).toEqual([]);
   });
 
   test("a screenshot stays inside the repository and is WebP", () => {
@@ -99,15 +123,9 @@ describe("one offer", () => {
   });
 
   test("a release is tagged v<version> and listed newest first", () => {
-    const release = (version: string, tag = `v${version}`) => ({
-      version,
-      tag,
-      commit: null,
-      artifactDigest: null,
-    });
-    expect(messages(offer({ releases: [release("0.1.0", "v0.1")] }))).toEqual([
-      "release 0.1.0 must be tagged v0.1.0",
-    ]);
+    expect(
+      messages(offer({ releases: [release("0.1.0", { tag: "v0.1" })] })),
+    ).toEqual(["release 0.1.0 must be tagged v0.1.0"]);
     expect(
       messages(offer({ releases: [release("0.1.0"), release("0.2.0")] })),
     ).toEqual(["releases must be newest first, each once: 0.1.0 before 0.2.0"]);
@@ -121,12 +139,7 @@ describe("one offer", () => {
       messages(
         offer({
           releases: [
-            {
-              version: "0.1.0",
-              tag: "v0.1.0",
-              commit: null,
-              artifactDigest: `sha256:${"a".repeat(64)}`,
-            },
+            release("0.1.0", { artifactDigest: `sha256:${"a".repeat(64)}` }),
           ],
         }),
       ),
@@ -172,10 +185,7 @@ describe("the registry", () => {
   test("the offered release is the newest with a commit", () => {
     const commit = "a".repeat(40);
     const value = offer({
-      releases: [
-        { version: "0.2.0", tag: "v0.2.0", commit: null, artifactDigest: null },
-        { version: "0.1.0", tag: "v0.1.0", commit, artifactDigest: null },
-      ],
+      releases: [release("0.2.0"), release("0.1.0", { commit })],
     });
     const result = checkOffer(entry(value));
     expect(result.offer).not.toBeNull();

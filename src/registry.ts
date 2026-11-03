@@ -12,9 +12,16 @@ export type Localized = Readonly<{ cs: string; en: string }>;
 
 export type Seed = Readonly<{ label: Localized; brief: Localized }>;
 
+/** One release: its version and tag, what it is built on (the app
+ * generation, the scaffold stack and the exact Bun, which a generation
+ * transition or a release of the stack profile changes) and, once it is
+ * published, the commit its tag points to. */
 export type Release = Readonly<{
   version: string;
   tag: string;
+  generation: string;
+  stack: string;
+  bun: string;
   commit: string | null;
   artifactDigest: string | null;
 }>;
@@ -29,9 +36,6 @@ export type Offer = Readonly<{
   publisher: string;
   movedFrom?: string;
   license: string;
-  generation: string;
-  stack: string;
-  bun: string;
   stone: string;
   pricing: "free";
   summary: Localized;
@@ -88,8 +92,9 @@ export function compareVersions(a: string, b: string): number {
   return 0;
 }
 
-/** The release Lazurio offers: the newest one whose commit is recorded, or,
- * while none has one, the newest (which cannot be adopted). */
+/** The release an offer stands for: the newest one whose commit is
+ * recorded, which Lazurio offers, or, while none has one, the newest, and
+ * Lazurio does not show the offer yet. */
 export function offeredRelease(offer: Offer): Release {
   const first = offer.releases[0];
   if (first === undefined) throw new Error(`${offer.id} has no release`);
@@ -210,9 +215,6 @@ function canonical(offer: Offer): Offer {
     publisher: offer.publisher,
     ...(offer.movedFrom === undefined ? {} : { movedFrom: offer.movedFrom }),
     license: offer.license,
-    generation: offer.generation,
-    stack: offer.stack,
-    bun: offer.bun,
     stone: offer.stone,
     pricing: offer.pricing,
     summary: localized(offer.summary),
@@ -233,6 +235,9 @@ function canonical(offer: Offer): Offer {
     releases: offer.releases.map((release) => ({
       version: release.version,
       tag: release.tag,
+      generation: release.generation,
+      stack: release.stack,
+      bun: release.bun,
       commit: release.commit,
       artifactDigest: release.artifactDigest,
     })),
