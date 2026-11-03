@@ -60,9 +60,10 @@ const validateOffer = ajv.compile<Offer>(offerSchema);
 const validateIndexShape = ajv.compile(indexSchema);
 
 /** The App generations each stack profile is for (LazurioPlatform
- * docs/stack-profiles.md): the generation names the data layer. */
+ * docs/stack-profiles.md): the generation names the data layer, and a
+ * content module with data keeps the tools of content in app/v3. */
 export const profileGenerations: Readonly<Record<string, readonly string[]>> = {
-  content: ["app/v1", "app/v2"],
+  content: ["app/v1", "app/v2", "app/v3"],
   app: ["app/v1", "app/v2"],
   "app-data": ["app/v3"],
   "app-database": ["app/v4"],

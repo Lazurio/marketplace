@@ -174,7 +174,7 @@
           "pattern": "^app/v[1-9][0-9]*$"
         },
         "stackProfile": {
-          "description": "The stack profile and its release this release is built on, <profile>@<YYYY.MM> or a security patch <profile>@<YYYY.MM.P> (LazurioPlatform docs/stack-profiles.md). The profile belongs to the generation: content and app to app/v1 and app/v2, app-data to app/v3, app-database to app/v4.",
+          "description": "The stack profile and its release this release is built on, <profile>@<YYYY.MM> or a security patch <profile>@<YYYY.MM.P> (LazurioPlatform docs/stack-profiles.md). The profile belongs to the generation: app to app/v1 and app/v2, content to app/v1 and app/v2 (app/v3 with data), app-data to app/v3, app-database to app/v4.",
           "type": "string",
           "pattern": "^(content|app|app-data|app-database)@\\d{4}\\.\\d{2}(\\.\\d+)?$"
         },

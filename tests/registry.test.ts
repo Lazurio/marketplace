@@ -100,6 +100,11 @@ describe("one offer", () => {
     const one = (generation: string, stackProfile: string) =>
       offer({ releases: [release("0.1.0", { generation, stackProfile })] });
     expect(messages(one("app/v2", "content@2026.11"))).toEqual([]);
+    // A content module with data keeps the tools of content in app/v3.
+    expect(messages(one("app/v3", "content@2026.11"))).toEqual([]);
+    expect(messages(one("app/v4", "content@2026.11"))).toEqual([
+      "release 0.1.0: stack profile content is not for app/v4",
+    ]);
     expect(messages(one("app/v3", "app-data@2026.11"))).toEqual([]);
     expect(messages(one("app/v4", "app-database@2026.11"))).toEqual([]);
     expect(messages(one("app/v3", "app@2026.11"))).toEqual([

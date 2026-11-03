@@ -35,7 +35,8 @@ Each release also says what it is built on, because a release can change it:
 - `stackProfile` is the [stack profile](https://github.com/Lazurio/LazurioPlatform/blob/main/docs/stack-profiles.md)
   and its release, `<profile>@<YYYY.MM>` (a security patch
   `<profile>@<YYYY.MM.P>`), such as `app-data@2026.11`. The profile belongs to
-  the generation: `content` and `app` to `app/v1` and `app/v2`, `app-data` to
+  the generation: `app` to `app/v1` and `app/v2`, `content` to `app/v1` and
+  `app/v2` (and `app/v3` for a content module with data), `app-data` to
   `app/v3`, `app-database` to `app/v4`. A profile release covers all four
   profiles at once.
 - `stack` is the stack the scaffold creates (`lazurio module create --stack`;
