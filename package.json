@@ -1,0 +1,23 @@
+{
+  "name": "lazurio-marketplace",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "bun@1.4.2",
+  "scripts": {
+    "check": "bun run typecheck && bun run lint && bun test && bun run validate",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check --error-on-warnings .",
+    "format": "biome check --write .",
+    "test": "bun test",
+    "validate": "bun run scripts/validate.ts",
+    "index": "bun run scripts/validate.ts --write",
+    "verify:sources": "bun run scripts/verify-sources.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@types/bun": "1.4.2",
+    "ajv": "8.20.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,45 @@
+# Mission Control of Lazurio's example Organization: the first template of
+# the Marketplace (order decided 2026-11-03). The release is not published
+# yet: its conversion to the template contract starts once the stack profile
+# is chosen, so the commit stays null and the offer cannot be adopted.
+schemaVersion: lazurio.marketplace.offer.v1
+id: mission-control
+section: app-templates
+title: Mission Control
+module: mission-control
+repository: LazurioExampleOrganization/mission-control
+publisher: LazurioExampleOrganization
+license: MIT
+generation: app/v3
+stack: vite-react
+bun: 1.4.2
+stone: control
+pricing: free
+summary:
+  cs: Plány, úkoly a roadmapy vaší Organizace na jednom místě.
+  en: Your Organization's plans, tasks and roadmaps in one place.
+features:
+  - title:
+      cs: Plány a úkoly
+      en: Plans and tasks
+    text:
+      cs: Každý plán má svůj kód, cíl, rozsah a úkoly. Vidíte, co se právě dělá, kdo to vlastní a co na čem závisí.
+      en: Every plan has its code, goal, scope and tasks. You see what is under way, who owns it and what depends on what.
+  - title:
+      cs: Roadmapa
+      en: Roadmap
+    text:
+      cs: Plány seřazené podle priority a stavu, od nápadu po dokončení.
+      en: Plans ordered by priority and status, from an idea to done.
+  - title:
+      cs: Data ve vašem repozitáři
+      en: Data in your repository
+    text:
+      cs: Plány a úkoly leží v datovém repozitáři vaší Organizace. Agent je čte a zapisuje stejně jako vy.
+      en: Plans and tasks live in your Organization's data repository. Your agent reads and writes them as you do.
+screenshots: []
+releases:
+  - version: 0.1.0
+    tag: v0.1.0
+    commit: null
+    artifactDigest: null

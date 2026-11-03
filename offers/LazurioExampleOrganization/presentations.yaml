@@ -1,0 +1,49 @@
+# Presentations, the pilot offer Lazurio has carried in its own code
+# (LazurioPlatform src/launchpad/marketplace.ts, plan DEV-6593). The template
+# moves from TemplatesRozjedeme-ai/Presentations to LazurioExampleOrganization
+# with a clean history (decided 2026-11-03); the new repository does not exist
+# yet. Release 0.1.0 was never published, so the commit stays null and the
+# offer cannot be adopted. The screens Lazurio bundles today move into the
+# template's repository with the release and are listed here then.
+schemaVersion: lazurio.marketplace.offer.v1
+id: presentations
+section: app-templates
+title: Presentations
+module: presentations
+repository: LazurioExampleOrganization/presentations
+publisher: LazurioExampleOrganization
+movedFrom: TemplatesRozjedeme-ai/Presentations
+license: MIT
+generation: app/v1
+stack: vite-react
+bun: 1.4.2
+stone: presentation
+pricing: free
+summary:
+  cs: Knihovna prezentací, které tvoříte se svým agentem.
+  en: A library of presentations you create with your agent.
+features:
+  - title:
+      cs: Knihovna
+      en: Library
+    text:
+      cs: Všechny prezentace na jednom místě, u každé náhled prvního slidu a podklady, ze kterých vznikla.
+      en: Every presentation in one place, with a preview of its first slide and the sources it was built from.
+  - title:
+      cs: Promítání a PDF
+      en: Presenting and PDF
+    text:
+      cs: Slidy promítáte v prohlížeči a listujete jimi šipkami. Do PDF je vytisknete ve formátu 16:9.
+      en: Present the slides in the browser and move through them with the arrow keys. Print them to 16:9 PDF pages.
+  - title:
+      cs: Tvorba s agentem
+      en: Created with your agent
+    text:
+      cs: Řekněte agentovi, komu je prezentace určená a z čeho má vycházet. Navrhne osnovu, připraví slidy z podkladů vaší Organizace a dá vám je ke kontrole.
+      en: Tell the agent who the presentation is for and what it should draw on. It proposes an outline, drafts the slides from your Organization's sources and hands them to you for review.
+screenshots: []
+releases:
+  - version: 0.1.0
+    tag: v0.1.0
+    commit: null
+    artifactDigest: null
