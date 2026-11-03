@@ -1,0 +1,289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Lazurio/marketplace/schemas/offer.v1.schema.json",
+  "title": "Lazurio Marketplace offer, version 1",
+  "description": "One module template listed in the Marketplace of Lazurio: the public repository it is released from, the words and screens of its card, and its releases. A listing is discovery information, never permission.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "section",
+    "title",
+    "module",
+    "repository",
+    "publisher",
+    "license",
+    "stone",
+    "pricing",
+    "summary",
+    "features",
+    "seeds",
+    "screenshots",
+    "releases"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "lazurio.marketplace.offer.v1"
+    },
+    "id": {
+      "description": "The offer's id, unique in the registry; Lazurio shows it at /marketplace/<id>. At most 32 characters, so that Lazurio's adoption prompt id marketplace-<id>-<seed>-<release> stays within the 64 characters of a prompt Chat takes by link.",
+      "$ref": "#/$defs/offerId"
+    },
+    "section": {
+      "description": "The Marketplace section; app templates only in version 1.",
+      "enum": ["app-templates"]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60
+    },
+    "module": {
+      "description": "The module slug an adoption proposes; equal to the id in the template's lazurio.module.json. The agent confirms it against the Organization's own modules.",
+      "$ref": "#/$defs/slug"
+    },
+    "repository": {
+      "description": "The public GitHub repository the releases come from, owner/name.",
+      "$ref": "#/$defs/repository"
+    },
+    "publisher": {
+      "description": "The GitHub Organization or account that publishes the releases; the owner of repository and the directory of this file.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$"
+    },
+    "movedFrom": {
+      "description": "The repository earlier records named, when the template moved to repository with a clean history. Informative only.",
+      "$ref": "#/$defs/repository"
+    },
+    "license": {
+      "description": "SPDX identifier of the template's license, as GitHub detects it in the release.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]*$"
+    },
+    "stone": {
+      "description": "The stone the adopted module shows in Apps; Lazurio shows its default stone for a key it does not know.",
+      "$ref": "#/$defs/slug"
+    },
+    "pricing": {
+      "description": "Reserved for paid templates; free is the only value in version 1.",
+      "enum": ["free"]
+    },
+    "summary": {
+      "description": "The one line of the card and the detail.",
+      "$ref": "#/$defs/line"
+    },
+    "features": {
+      "description": "What the app does: a short title and its sentence each.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "text"],
+        "properties": {
+          "title": {
+            "$ref": "#/$defs/label"
+          },
+          "text": {
+            "$ref": "#/$defs/paragraph"
+          }
+        }
+      }
+    },
+    "seeds": {
+      "description": "How an adopted module may start: empty always, sample when the release carries an invented example. The label is the dialog's choice; the brief completes the person's own words to the agent \"Start with …\" (in Czech the informal ty).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["empty"],
+      "properties": {
+        "empty": {
+          "$ref": "#/$defs/seed"
+        },
+        "sample": {
+          "$ref": "#/$defs/seed"
+        }
+      }
+    },
+    "screenshots": {
+      "description": "Screens of the app at the offered release: WebP files 1600 px wide in its repository, with invented content only. The first one is the card's.",
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "alt"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[A-Za-z0-9._/-]+\\.webp$"
+          },
+          "alt": {
+            "$ref": "#/$defs/line"
+          }
+        }
+      }
+    },
+    "releases": {
+      "description": "The releases, newest first. Lazurio shows an offer only once a release has its commit recorded, and offers the newest such release; an offer whose releases all lack one is announced here, not shown.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/release"
+      }
+    }
+  },
+  "$defs": {
+    "offerId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "maxLength": 32
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "maxLength": 64
+    },
+    "repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})/[A-Za-z0-9._-]{1,100}$"
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "tag",
+        "generation",
+        "stackProfile",
+        "stack",
+        "bun",
+        "commit",
+        "artifactDigest"
+      ],
+      "properties": {
+        "version": {
+          "description": "Semantic version of the release, independent of the app generation.",
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+        },
+        "tag": {
+          "description": "The annotated tag of the release, v<version>.",
+          "type": "string",
+          "pattern": "^v"
+        },
+        "generation": {
+          "description": "The app generation of this release, app/v<N>; it names the data layer, not quality. A generation transition is a release.",
+          "type": "string",
+          "pattern": "^app/v[1-9][0-9]*$"
+        },
+        "stackProfile": {
+          "description": "The stack profile and its release this release is built on, <profile>@<YYYY.MM> or a security patch <profile>@<YYYY.MM.P> (LazurioPlatform docs/stack-profiles.md). The profile belongs to the generation: app to app/v1 and app/v2, content to app/v1 and app/v2 (app/v3 with data), app-data to app/v3, app-database to app/v4.",
+          "type": "string",
+          "pattern": "^(content|app|app-data|app-database)@\\d{4}\\.\\d{2}(\\.\\d+)?$"
+        },
+        "stack": {
+          "description": "The stack the scaffold creates for this release (lazurio module create --stack).",
+          "$ref": "#/$defs/slug"
+        },
+        "bun": {
+          "description": "The exact Bun this release pins (packageManager bun@x.y.z); a release of the stack profile changes it.",
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "commit": {
+          "description": "The full commit the tag points to; null until the release is published. A tag alone is not an immutable identity.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            }
+          ]
+        },
+        "artifactDigest": {
+          "description": "Digest of the release's attested artifact; null until there is one.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          ]
+        }
+      }
+    },
+    "label": {
+      "description": "A short title in Czech and English.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cs", "en"],
+      "properties": {
+        "cs": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      }
+    },
+    "line": {
+      "description": "One line in Czech and English.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cs", "en"],
+      "properties": {
+        "cs": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      }
+    },
+    "paragraph": {
+      "description": "A sentence or two in Czech and English.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cs", "en"],
+      "properties": {
+        "cs": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 280
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 280
+        }
+      }
+    },
+    "seed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "brief"],
+      "properties": {
+        "label": {
+          "$ref": "#/$defs/label"
+        },
+        "brief": {
+          "$ref": "#/$defs/line"
+        }
+      }
+    }
+  }
+}

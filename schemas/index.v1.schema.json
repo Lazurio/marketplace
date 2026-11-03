@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Lazurio/marketplace/schemas/index.v1.schema.json",
+  "title": "Lazurio Marketplace index, version 1",
+  "description": "index.json: every offer of the registry in one file, generated from offers/ (bun run index), ordered by id. Consumers read it at one commit of the registry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "offers"],
+  "properties": {
+    "schemaVersion": { "const": "lazurio.marketplace.index.v1" },
+    "offers": {
+      "type": "array",
+      "items": { "$ref": "offer.v1.schema.json" }
+    }
+  }
+}

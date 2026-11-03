@@ -1,0 +1,82 @@
+# Mission Control, the first template of the Marketplace (plan DEV-6593). Its source
+# moved from Lazurio/mission-control to LazurioTemplates (decided 2026-11-03).
+# Release 4.0.0 was published on 2026-11-03 as the annotated tag v4.0.0.
+schemaVersion: lazurio.marketplace.offer.v1
+id: mission-control
+section: app-templates
+title: Mission Control
+module: mission-control
+repository: LazurioTemplates/mission-control
+publisher: LazurioTemplates
+license: MIT
+stone: control
+pricing: free
+summary:
+  cs: Plány a roadmapy vaší Organizace na jednom místě, se schvalováním změn.
+  en: Your Organization's plans and roadmaps in one place, with reviewed changes.
+features:
+  - title:
+      cs: Plány
+      en: Plans
+    text:
+      cs: Každý plán má svůj kód, cíl, rozsah, rozhodnutí a kritéria přijetí. Vidíte, co se dělá, proč a pro koho.
+      en: Every plan has its code, goal, scope, decisions and acceptance criteria. You see what is being done, why and for whom.
+  - title:
+      cs: Roadmapy
+      en: Roadmaps
+    text:
+      cs: Plány seřazené do kroků v čase, s prioritami, dalšími kroky, které můžou začít, a dosavadním postupem.
+      en: Plans ordered into steps over time, with priorities, the next steps that can start and the progress so far.
+  - title:
+      cs: Koncept a publikace
+      en: Draft and publish
+    text:
+      cs: Každá úprava je nejdřív koncept. Změněné záznamy zkontrolujete srozumitelně popsané a publikujete je jako jednu změnu, nebo je vrátíte.
+      en: Every edit is a draft first. You review the changed records in plain words and publish them as one change, or return them.
+  - title:
+      cs: Data ve vašem repozitáři
+      en: Data in your repository
+    text:
+      cs: Plány a roadmapy leží v datovém repozitáři vaší Organizace. Agent je čte a zapisuje stejně jako vy.
+      en: Plans and roadmaps live in your Organization's data repository. Your agent reads and writes them as you do.
+seeds:
+  empty:
+    label:
+      cs: Bez plánů
+      en: No plans
+    brief:
+      cs: prázdnými daty (ukázkové plány nepřenášej)
+      en: empty data (do not carry the example plans over)
+  sample:
+    label:
+      cs: S ukázkovými plány
+      en: With example plans
+    brief:
+      cs: ukázkovými plány z vydání
+      en: the example plans from the release
+screenshots:
+  - path: docs/screenshots/mission-control-overview.webp
+    alt:
+      cs: Přehled s plány podle stavu, hlavní roadmapou a jejími dalšími kroky
+      en: The overview with plans by state, the main roadmap and its next steps
+  - path: docs/screenshots/mission-control-roadmap.webp
+    alt:
+      cs: Roadmapa s prioritami a kroky seskupenými podle období
+      en: A roadmap with priorities and steps grouped by period
+  - path: docs/screenshots/mission-control-plan.webp
+    alt:
+      cs: Detail plánu s jeho cílem, rozsahem a roadmapami, na kterých je
+      en: A plan's detail with its goal, scope and the roadmaps it is on
+  - path: docs/screenshots/mission-control-draft.webp
+    alt:
+      cs: Koncept se změněnými záznamy před publikací
+      en: A draft with the changed records before publishing
+releases:
+  - version: 4.0.0
+    tag: v4.0.0
+    generation: app/v3
+    stackProfile: app-data@2026.11
+    stack: vite-react
+    bun: 1.4.4
+    commit: 8d29a8deaa03694be4358dcf293c19945d302d3e
+    artifactDigest: null
