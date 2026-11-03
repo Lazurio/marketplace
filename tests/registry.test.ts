@@ -151,6 +151,16 @@ describe("one offer", () => {
     expect(messages(shot("docs/screens/gallery.png"))).not.toEqual([]);
   });
 
+  test("an id is at most 32 characters, for Lazurio's 64-character prompt id", () => {
+    const longest = "a".repeat(32);
+    expect(
+      messages(offer({ id: longest }), `offers/Example/${longest}.yaml`),
+    ).toEqual([]);
+    expect(
+      messages(offer({ id: `${longest}a` }), `offers/Example/${longest}a.yaml`),
+    ).not.toEqual([]);
+  });
+
   test("the file lives under its publisher and id", () => {
     expect(messages(offer(), "offers/Other/notes.yaml")).toEqual([
       "belongs at offers/Example/notes.yaml",

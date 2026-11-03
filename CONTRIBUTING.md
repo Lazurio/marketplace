@@ -51,7 +51,9 @@ git rev-parse 'v0.1.0^{commit}'   # the full commit for the offer
 ## 3. Open a pull request here
 
 Add `offers/<publisher>/<id>.yaml`, where `<publisher>` owns the repository and
-`<id>` is unique in the registry. Lazurio's own templates come the same
+`<id>` is unique in the registry, lowercase letters, digits and hyphens, at most
+32 characters (Lazurio's prompt for Chat adds the start and the release to it
+within 64). Lazurio's own templates come the same
 way, published by the GitHub Organization LazurioTemplates from its
 repositories (`offers/LazurioTemplates/`). Copy an existing offer as
 a start; the schema is `schemas/offer.v1.schema.json`. Then:

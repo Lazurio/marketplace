@@ -27,8 +27,8 @@
       "const": "lazurio.marketplace.offer.v1"
     },
     "id": {
-      "description": "The offer's id, unique in the registry; Lazurio shows it at /marketplace/<id>.",
-      "$ref": "#/$defs/slug"
+      "description": "The offer's id, unique in the registry; Lazurio shows it at /marketplace/<id>. At most 32 characters, so that Lazurio's adoption prompt id marketplace-<id>-<seed>-<release> stays within the 64 characters of a prompt Chat takes by link.",
+      "$ref": "#/$defs/offerId"
     },
     "section": {
       "description": "The Marketplace section; app templates only in version 1.",
@@ -135,6 +135,11 @@
     }
   },
   "$defs": {
+    "offerId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "maxLength": 32
+    },
     "slug": {
       "type": "string",
       "pattern": "^[a-z0-9][a-z0-9-]*$",
