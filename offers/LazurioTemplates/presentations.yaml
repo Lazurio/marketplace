@@ -1,16 +1,17 @@
 # Presentations, the pilot offer Lazurio carried in its own code
 # (LazurioPlatform src/launchpad/marketplace.ts, plan DEV-6593), the third
-# template of the Marketplace. It moved to LazurioExampleOrganization with a
-# clean history (decided 2026-11-03). Release 0.1.0 is prepared in
-# LazurioExampleOrganization/presentations#1; it is not tagged yet, so the
-# commit stays null and Lazurio does not show the offer.
+# template of the Marketplace. It moved from TemplatesRozjedeme-ai with a clean
+# history and is published by LazurioTemplates (decided 2026-11-03). Release
+# 0.1.0 is prepared in LazurioTemplates/presentations#1; the repository is
+# private and not tagged yet, so the commit stays null and Lazurio does not
+# show the offer.
 schemaVersion: lazurio.marketplace.offer.v1
 id: presentations
 section: app-templates
 title: Presentations
 module: presentations
-repository: LazurioExampleOrganization/presentations
-publisher: LazurioExampleOrganization
+repository: LazurioTemplates/presentations
+publisher: LazurioTemplates
 license: MIT
 stone: presentation
 pricing: free

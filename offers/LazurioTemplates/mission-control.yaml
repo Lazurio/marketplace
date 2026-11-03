@@ -1,17 +1,18 @@
 # Mission Control, the first template of the Marketplace (order decided
-# 2026-11-03). Lazurio releases it from its upstream Lazurio/mission-control
-# (MIT, releases v3.0.0 to v3.1.0); Lazurio's example Organization takes the
-# releases over by merging their tags. Release 4.0.0 continues the 3.x line on
-# the stack profile app-data@2026.11 and is prepared in
-# Lazurio/mission-control#13; it is not tagged yet, so the commit stays null
-# and Lazurio does not show the offer.
+# 2026-11-03). LazurioTemplates publishes the templates (decided 2026-11-03);
+# the upstream moved there from Lazurio/mission-control with its releases
+# v3.0.0 to v3.1.0 (MIT). Lazurio Example Organization adopts it from the
+# Marketplace like any other Organization. Release 4.0.0 continues the 3.x
+# line on the stack profile app-data@2026.11 and is prepared in
+# LazurioTemplates/mission-control#13; it is not tagged yet, so the commit
+# stays null and Lazurio does not show the offer.
 schemaVersion: lazurio.marketplace.offer.v1
 id: mission-control
 section: app-templates
 title: Mission Control
 module: mission-control
-repository: Lazurio/mission-control
-publisher: Lazurio
+repository: LazurioTemplates/mission-control
+publisher: LazurioTemplates
 license: MIT
 stone: control
 pricing: free

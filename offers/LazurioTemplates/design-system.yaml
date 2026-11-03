@@ -1,15 +1,16 @@
-# The design system of Lazurio's example Organization: the second template of
-# the Marketplace (order decided 2026-11-03). Release 1.0.0 stays generation
-# app/v1 on the stack profile content and is prepared in
-# LazurioExampleOrganization/design-system#7; it is not tagged yet, so the
-# commit stays null and Lazurio does not show the offer.
+# The design system with an invented brand, Example: the second template of
+# the Marketplace (order decided 2026-11-03), published by LazurioTemplates
+# with a fresh history from LazurioExampleOrganization/design-system#7.
+# Release 1.0.0 stays generation app/v1 on the stack profile content and is
+# prepared in LazurioTemplates/design-system#1; the repository is private and
+# not tagged yet, so the commit stays null and Lazurio does not show the offer.
 schemaVersion: lazurio.marketplace.offer.v1
 id: design-system
 section: app-templates
 title: Design System
 module: design-system
-repository: LazurioExampleOrganization/design-system
-publisher: LazurioExampleOrganization
+repository: LazurioTemplates/design-system
+publisher: LazurioTemplates
 license: MIT
 stone: palette
 pricing: free

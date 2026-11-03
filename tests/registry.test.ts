@@ -157,11 +157,14 @@ describe("one offer", () => {
     ]);
   });
 
-  test("Lazurio publishes from its own repositories as any publisher", () => {
+  test("LazurioTemplates publishes from its own repositories as any publisher", () => {
     expect(
       messages(
-        offer({ repository: "Lazurio/notes", publisher: "Lazurio" }),
-        "offers/Lazurio/notes.yaml",
+        offer({
+          repository: "LazurioTemplates/notes",
+          publisher: "LazurioTemplates",
+        }),
+        "offers/LazurioTemplates/notes.yaml",
       ),
     ).toEqual([]);
   });
