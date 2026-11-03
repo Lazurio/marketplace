@@ -72,6 +72,7 @@ releases:
   - version: 0.1.0
     tag: v0.1.0
     generation: app/v1
+    stackProfile: app@2026.11
     stack: vite-react
     bun: 1.4.4
     commit: null

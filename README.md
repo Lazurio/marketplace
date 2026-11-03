@@ -32,7 +32,14 @@ Each release also says what it is built on, because a release can change it:
   layer, not quality: v1 and v2 have no data of their own, v3 keeps data in
   repository-db, v4 in a Dolt database (on the Organization's server or
   hosted outside it, a setting of v4). A generation transition is a release.
-- `stack` is the stack the scaffold creates (`lazurio module create --stack`).
+- `stackProfile` is the [stack profile](https://github.com/Lazurio/LazurioPlatform/blob/main/docs/stack-profiles.md)
+  and its release, `<profile>@<YYYY.MM>` (a security patch
+  `<profile>@<YYYY.MM.P>`), such as `app-data@2026.11`. The profile belongs to
+  the generation: `content` and `app` to `app/v1` and `app/v2`, `app-data` to
+  `app/v3`, `app-database` to `app/v4`. A profile release covers all four
+  profiles at once.
+- `stack` is the stack the scaffold creates (`lazurio module create --stack`;
+  from `app/v3` on with `--data`).
 - `bun` is the exact Bun the release pins; a release of the template's stack
   profile changes it.
 

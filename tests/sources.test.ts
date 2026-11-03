@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test";
 import type { Offer, Release } from "../src/registry";
 import {
   type GitHub,
+  namesStackProfile,
   requiredFiles,
   verifySources,
   webpWidth,
@@ -15,6 +16,7 @@ const release = (overrides: Partial<Release> = {}): Release => ({
   version: "1.0.0",
   tag: "v1.0.0",
   generation: "app/v3",
+  stackProfile: "app-data@2026.11",
   stack: "vite-react",
   bun: "1.4.4",
   commit,
@@ -86,6 +88,9 @@ function repository(replace: Record<string, unknown> = {}): GitHub {
         `${repo}/contents/${path}?ref=${commit}`,
         {},
       ]),
+    ),
+    [`${repo}/contents/README.md?ref=${commit}`]: new TextEncoder().encode(
+      "Built on the stack profile `app-data@2026.11`.",
     ),
     ...replace,
   };
@@ -216,6 +221,7 @@ describe("an offer's sources", () => {
             version: "0.9.0",
             tag: "v0.9.0",
             generation: "app/v1",
+            stackProfile: "app@2026.05",
             bun: "1.4.2",
           }),
         ],
@@ -223,6 +229,35 @@ describe("an offer's sources", () => {
       repository(),
     );
     expect(report.problems).toEqual([]);
+  });
+
+  test("the README or docs/extending.md names the stack profile", async () => {
+    const readme = `/repos/Example/notes/contents/README.md?ref=${commit}`;
+    const extending = `/repos/Example/notes/contents/docs/extending.md?ref=${commit}`;
+    const words = (text: string) => new TextEncoder().encode(text);
+    const silent = await verifySources(
+      offer(),
+      repository({ [readme]: words("A template.") }),
+    );
+    expect(silent.problems).toEqual([
+      "README.md and docs/extending.md do not name the stack profile app-data@2026.11",
+    ]);
+    const inGuide = await verifySources(
+      offer(),
+      repository({
+        [readme]: words("A template."),
+        [extending]: words("The stack profile app-data@2026.11 pins Bun."),
+      }),
+    );
+    expect(inGuide.problems).toEqual([]);
+    const missing = await verifySources(
+      offer(),
+      repository({ [readme]: null }),
+    );
+    expect(missing.problems).toEqual([
+      `README.md is missing at ${commit}`,
+      "README.md and docs/extending.md do not name the stack profile app-data@2026.11",
+    ]);
   });
 
   test("a screenshot is a 1600 px WebP", async () => {
@@ -237,6 +272,36 @@ describe("an offer's sources", () => {
       "docs/screens/a.webp is 800 px wide, not 1600",
     ]);
   });
+});
+
+test("namesStackProfile finds the profile's release, not a neighbour", () => {
+  const link =
+    "https://github.com/Lazurio/LazurioPlatform/blob/main/docs/stack-profiles.md";
+  expect(namesStackProfile("on `content@2026.11`", "content@2026.11")).toBe(
+    true,
+  );
+  expect(
+    namesStackProfile(
+      `[\`app-data\`](${link}#app-data), release 2026.11: Bun 1.4.4`,
+      "app-data@2026.11",
+    ),
+  ).toBe(true);
+  expect(namesStackProfile("app-data@2026.11.1", "app-data@2026.11.1")).toBe(
+    true,
+  );
+  expect(namesStackProfile("app-data@2026.11", "app@2026.11")).toBe(false);
+  expect(namesStackProfile("app-data@2026.11.1", "app-data@2026.11")).toBe(
+    false,
+  );
+  expect(namesStackProfile("app-data@2026.110", "app-data@2026.11")).toBe(
+    false,
+  );
+  expect(
+    namesStackProfile(`(${link}#app-database), 2026.11`, "app-data@2026.11"),
+  ).toBe(false);
+  expect(
+    namesStackProfile(`(${link}#app-data), 2027.05`, "app-data@2026.11"),
+  ).toBe(false);
 });
 
 test("webpWidth reads a WebP header and refuses other bytes", () => {

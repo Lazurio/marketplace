@@ -1,4 +1,4 @@
-import { type Offer, offeredRelease } from "./registry";
+import { type Offer, offeredRelease, splitStackProfile } from "./registry";
 
 // The registry's online rules: what the template's repository holds at the
 // release an offer names. An offer whose releases have no commit yet is
@@ -38,6 +38,28 @@ const record = (value: unknown): Record<string, unknown> | null =>
   typeof value === "object" && value !== null && !Array.isArray(value)
     ? (value as Record<string, unknown>)
     : null;
+
+/** Where a release names its stack profile: the README or the guide to
+ * extending the module, both files the contract requires. */
+export const profileFiles = ["README.md", "docs/extending.md"] as const;
+
+const literal = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Whether a text names the stack profile release, such as app-data@2026.11:
+ * that exact reference, or a link to the profile's section of
+ * stack-profiles.md together with the release. A neighbouring profile or
+ * release (app-database, 2026.11.1) does not count. */
+export function namesStackProfile(text: string, stackProfile: string): boolean {
+  const { profile, release } = splitStackProfile(stackProfile);
+  const releaseEnd = "(?!\\.?\\d)";
+  const exact = new RegExp(
+    `(?<![\\w-])${literal(profile)}@${literal(release)}${releaseEnd}`,
+  );
+  if (exact.test(text)) return true;
+  const link = new RegExp(`stack-profiles\\.md#${literal(profile)}(?![\\w-])`);
+  const mention = new RegExp(`(?<![\\d.])${literal(release)}${releaseEnd}`);
+  return link.test(text) && mention.test(text);
+}
 
 /** The width of a WebP image, or null when the bytes are not one. */
 export function webpWidth(bytes: Uint8Array): number | null {
@@ -137,9 +159,20 @@ export async function verifySources(
     }
   };
 
-  for (const path of requiredFiles)
-    if ((await file(path)).status !== 200)
-      problems.push(`${path} is missing at ${ref}`);
+  const texts = new Map<string, string>();
+  for (const path of requiredFiles) {
+    const answer = await file(path);
+    if (answer.status !== 200) problems.push(`${path} is missing at ${ref}`);
+    else texts.set(path, new TextDecoder().decode(answer.body));
+  }
+  if (
+    !profileFiles.some((path) =>
+      namesStackProfile(texts.get(path) ?? "", release.stackProfile),
+    )
+  )
+    problems.push(
+      `README.md and docs/extending.md do not name the stack profile ${release.stackProfile}`,
+    );
 
   // lazurio.module.json and the offered generation's app, as the Module
   // Standard of LazurioPlatform (docs/module-standard.md) requires them.

@@ -75,6 +75,7 @@ releases:
   - version: 1.0.0
     tag: v1.0.0
     generation: app/v1
+    stackProfile: content@2026.11
     stack: astro
     bun: 1.4.4
     commit: null

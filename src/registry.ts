@@ -13,13 +13,14 @@ export type Localized = Readonly<{ cs: string; en: string }>;
 export type Seed = Readonly<{ label: Localized; brief: Localized }>;
 
 /** One release: its version and tag, what it is built on (the app
- * generation, the scaffold stack and the exact Bun, which a generation
- * transition or a release of the stack profile changes) and, once it is
- * published, the commit its tag points to. */
+ * generation, the stack profile release, the scaffold stack and the exact
+ * Bun, which a generation transition or a release of the stack profile
+ * changes) and, once it is published, the commit its tag points to. */
 export type Release = Readonly<{
   version: string;
   tag: string;
   generation: string;
+  stackProfile: string;
   stack: string;
   bun: string;
   commit: string | null;
@@ -57,6 +58,28 @@ const ajv = new Ajv2020({ allErrors: true, strict: true });
 ajv.addSchema(offerSchema, "offer.v1.schema.json");
 const validateOffer = ajv.compile<Offer>(offerSchema);
 const validateIndexShape = ajv.compile(indexSchema);
+
+/** The App generations each stack profile is for (LazurioPlatform
+ * docs/stack-profiles.md): the generation names the data layer. */
+export const profileGenerations: Readonly<Record<string, readonly string[]>> = {
+  content: ["app/v1", "app/v2"],
+  app: ["app/v1", "app/v2"],
+  "app-data": ["app/v3"],
+  "app-database": ["app/v4"],
+};
+
+/** A release's stack profile split into the profile and its release, such
+ * as app-data and 2026.11. */
+export function splitStackProfile(stackProfile: string): {
+  profile: string;
+  release: string;
+} {
+  const at = stackProfile.indexOf("@");
+  return {
+    profile: stackProfile.slice(0, at),
+    release: stackProfile.slice(at + 1),
+  };
+}
 
 const semver =
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
@@ -134,6 +157,13 @@ export function checkOffer(entry: Entry): {
       problems.push(
         problem(
           `release ${release.version} must be tagged v${release.version}`,
+        ),
+      );
+    const { profile } = splitStackProfile(release.stackProfile);
+    if (!profileGenerations[profile]?.includes(release.generation))
+      problems.push(
+        problem(
+          `release ${release.version}: stack profile ${profile} is not for ${release.generation}`,
         ),
       );
     if (release.commit === null && release.artifactDigest !== null)
@@ -236,6 +266,7 @@ function canonical(offer: Offer): Offer {
       version: release.version,
       tag: release.tag,
       generation: release.generation,
+      stackProfile: release.stackProfile,
       stack: release.stack,
       bun: release.bun,
       commit: release.commit,

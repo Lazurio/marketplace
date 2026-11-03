@@ -12,11 +12,13 @@ import {
 
 const text = { cs: "Text", en: "Text" };
 
-/** A release of the generation, stack and Bun a test does not care about. */
+/** A release of the generation, stack profile, stack and Bun a test does
+ * not care about. */
 const release = (version: string, overrides: Record<string, unknown> = {}) => ({
   version,
   tag: `v${version}`,
   generation: "app/v1",
+  stackProfile: "app@2026.11",
   stack: "vite-react",
   bun: "1.4.4",
   commit: null,
@@ -82,8 +84,38 @@ describe("one offer", () => {
     expect(messages(one({ generation: undefined }))).not.toEqual([]);
   });
 
-  test("the offer itself names no generation, stack or Bun", () => {
+  test("a release names its stack profile release", () => {
+    const one = (stackProfile: unknown) =>
+      offer({ releases: [release("0.1.0", { stackProfile })] });
+    expect(messages(one("app@2026.11.1"))).toEqual([]);
+    expect(messages(one("content@2026.11"))).toEqual([]);
+    expect(messages(one(undefined))).not.toEqual([]);
+    expect(messages(one("app"))).not.toEqual([]);
+    expect(messages(one("app@2026-11"))).not.toEqual([]);
+    expect(messages(one("app@26.11"))).not.toEqual([]);
+    expect(messages(one("vite-react@2026.11"))).not.toEqual([]);
+  });
+
+  test("the stack profile is the generation's", () => {
+    const one = (generation: string, stackProfile: string) =>
+      offer({ releases: [release("0.1.0", { generation, stackProfile })] });
+    expect(messages(one("app/v2", "content@2026.11"))).toEqual([]);
+    expect(messages(one("app/v3", "app-data@2026.11"))).toEqual([]);
+    expect(messages(one("app/v4", "app-database@2026.11"))).toEqual([]);
+    expect(messages(one("app/v3", "app@2026.11"))).toEqual([
+      "release 0.1.0: stack profile app is not for app/v3",
+    ]);
+    expect(messages(one("app/v1", "app-data@2026.11"))).toEqual([
+      "release 0.1.0: stack profile app-data is not for app/v1",
+    ]);
+    expect(messages(one("app/v5", "app-database@2026.11"))).toEqual([
+      "release 0.1.0: stack profile app-database is not for app/v5",
+    ]);
+  });
+
+  test("the offer itself names no generation, stack profile, stack or Bun", () => {
     expect(messages(offer({ generation: "app/v1" }))).not.toEqual([]);
+    expect(messages(offer({ stackProfile: "app@2026.11" }))).not.toEqual([]);
     expect(messages(offer({ bun: "1.4.4" }))).not.toEqual([]);
     expect(messages(offer({ stack: "vite-react" }))).not.toEqual([]);
   });
@@ -93,7 +125,11 @@ describe("one offer", () => {
       messages(
         offer({
           releases: [
-            release("2.0.0", { generation: "app/v3", bun: "1.4.4" }),
+            release("2.0.0", {
+              generation: "app/v3",
+              stackProfile: "app-data@2026.11",
+              bun: "1.4.4",
+            }),
             release("1.0.0", { generation: "app/v1", bun: "1.4.2" }),
           ],
         }),
@@ -114,6 +150,15 @@ describe("one offer", () => {
     expect(messages(offer(), "offers/Other/notes.yaml")).toEqual([
       "belongs at offers/Example/notes.yaml",
     ]);
+  });
+
+  test("Lazurio publishes from its own repositories as any publisher", () => {
+    expect(
+      messages(
+        offer({ repository: "Lazurio/notes", publisher: "Lazurio" }),
+        "offers/Lazurio/notes.yaml",
+      ),
+    ).toEqual([]);
   });
 
   test("the publisher owns the repository", () => {

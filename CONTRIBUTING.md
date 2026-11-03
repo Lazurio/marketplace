@@ -21,6 +21,9 @@ The registry accepts a repository that follows the template contract:
 - Data (v3 and later): schemas and validation, an empty or invented seed. Never
   real company data, names or sign-ins.
 - `README.md`, `AGENTS.md` (how an agent works on the module), `CHANGELOG.md`.
+  The README or `docs/extending.md` names the release's stack profile, either
+  as `app-data@2026.11` or as a link to the profile's section of
+  `stack-profiles.md` together with its release (`2026.11`).
 - `docs/adoption.md`: how an agent adopts the template into another
   Organization. It checks live rights and a name collision, creates a private
   module with `lazurio module create`, merges the pinned commit so it stays an
@@ -48,7 +51,8 @@ git rev-parse 'v0.1.0^{commit}'   # the full commit for the offer
 ## 3. Open a pull request here
 
 Add `offers/<publisher>/<id>.yaml`, where `<publisher>` owns the repository and
-`<id>` is unique in the registry. Copy an existing offer as a start; the schema
+`<id>` is unique in the registry. Lazurio lists its own templates the same
+way, from its own repositories (`offers/Lazurio/`). Copy an existing offer as a start; the schema
 is `schemas/offer.v1.schema.json`. Then:
 
 ```sh
@@ -62,9 +66,9 @@ Commit the offer and `index.json` together. The card's words come in Czech and
 English: one line (`summary`) and up to four features. Say plainly what the app
 does; no superlatives, ratings or promises.
 
-Each release names its own `generation`, `stack` and `bun`. A new release of a
-listed template is a pull request that adds it at the top of `releases` with
-its commit and those three, and updates `screenshots` when the app looks
+Each release names its own `generation`, `stackProfile`, `stack` and `bun`. A
+new release of a listed template is a pull request that adds it at the top of
+`releases` with its commit and those four, and updates `screenshots` when the app looks
 different. The offer shows in Lazurio once a release has its commit.
 
 ## 4. Curator review

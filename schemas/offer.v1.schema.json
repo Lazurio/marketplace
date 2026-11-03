@@ -151,6 +151,7 @@
         "version",
         "tag",
         "generation",
+        "stackProfile",
         "stack",
         "bun",
         "commit",
@@ -171,6 +172,11 @@
           "description": "The app generation of this release, app/v<N>; it names the data layer, not quality. A generation transition is a release.",
           "type": "string",
           "pattern": "^app/v[1-9][0-9]*$"
+        },
+        "stackProfile": {
+          "description": "The stack profile and its release this release is built on, <profile>@<YYYY.MM> or a security patch <profile>@<YYYY.MM.P> (LazurioPlatform docs/stack-profiles.md). The profile belongs to the generation: content and app to app/v1 and app/v2, app-data to app/v3, app-database to app/v4.",
+          "type": "string",
+          "pattern": "^(content|app|app-data|app-database)@\\d{4}\\.\\d{2}(\\.\\d+)?$"
         },
         "stack": {
           "description": "The stack the scaffold creates for this release (lazurio module create --stack).",
