@@ -211,6 +211,23 @@ describe("one offer", () => {
     expect(messages(shots(set("cs", 7), set("en", 7)))).not.toEqual([]);
   });
 
+  test("a name is one string for both languages, or {cs, en} for a bilingual template", () => {
+    expect(messages(offer({ title: "Time Tracker" }))).toEqual([]);
+    expect(
+      messages(offer({ title: { cs: "Evidence času", en: "Time Tracker" } })),
+    ).toEqual([]);
+    for (const title of [
+      "",
+      "x".repeat(61),
+      { cs: "Evidence času" },
+      { cs: "Evidence času", en: "" },
+      { cs: "x".repeat(61), en: "Time Tracker" },
+      { cs: "Evidence času", en: "Time Tracker", de: "Zeiterfassung" },
+      7,
+    ])
+      expect(messages(offer({ title }))).not.toEqual([]);
+  });
+
   test("an id is at most 32 characters, for Lazurio's 64-character prompt id", () => {
     const longest = "a".repeat(32);
     expect(
@@ -365,6 +382,19 @@ describe("the registry", () => {
     expect(
       Object.keys(JSON.parse(buildIndex([localized])).offers[0].screenshots[0]),
     ).toEqual(["path", "alt", "locale"]);
+  });
+
+  test("the index keeps a one-string name as it is and a bilingual one as {cs, en}", () => {
+    const named = (title: unknown) =>
+      JSON.parse(
+        buildIndex([checkOffer(entry(offer({ title }))).offer as Offer]),
+      ).offers[0].title;
+    expect(named("Notes")).toBe("Notes");
+    const both = named({ en: "Time Tracker", cs: "Evidence času" });
+    expect(Object.entries(both)).toEqual([
+      ["cs", "Evidence času"],
+      ["en", "Time Tracker"],
+    ]);
   });
 
   test("the registry's own offers are valid and index.json is current", async () => {

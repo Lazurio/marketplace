@@ -75,7 +75,12 @@ bun run verify:sources   # optional locally, CI runs it
 
 Commit the offer and `index.json` together. The card's words come in Czech and
 English: one line (`summary`) and up to four features. Say plainly what the app
-does; no superlatives, ratings or promises.
+does; no superlatives, ratings or promises. The name (`title`) is one string for
+both languages, or `{cs, en}` for a bilingual template whose names differ
+("Evidence času" and "Time Tracker"). Like a screen's `locale`, Lazurio reads
+`{cs, en}` only from the release that includes
+[LazurioPlatform#908](https://github.com/Lazurio/LazurioPlatform/pull/908), so an
+offer with it is merged only after that release is final.
 
 Each release names its own `generation`, `stackProfile`, `stack` and `bun`. A
 new release of a listed template is a pull request that adds it at the top of

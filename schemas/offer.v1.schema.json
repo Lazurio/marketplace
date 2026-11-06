@@ -35,9 +35,17 @@
       "enum": ["app-templates"]
     },
     "title": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 60
+      "description": "The template's name: one string for both languages (today's records), or {cs, en} for a bilingual template whose names differ. Lazurio shows it in the page's language. Lazurio releases before the one that reads {cs, en} refuse an index with it, so a record with it waits for that release.",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        {
+          "$ref": "#/$defs/name"
+        }
+      ]
     },
     "module": {
       "description": "The module slug an adoption proposes; equal to the id in the template's lazurio.module.json. The agent confirms it against the Organization's own modules.",
@@ -220,6 +228,16 @@
             }
           ]
         }
+      }
+    },
+    "name": {
+      "description": "A name in Czech and English.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cs", "en"],
+      "properties": {
+        "cs": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "en": { "type": "string", "minLength": 1, "maxLength": 60 }
       }
     },
     "label": {

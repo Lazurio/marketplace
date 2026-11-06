@@ -31,7 +31,8 @@ export type Offer = Readonly<{
   schemaVersion: "lazurio.marketplace.offer.v1";
   id: string;
   section: "app-templates";
-  title: string;
+  /** One name for both languages, or a bilingual template's own in each. */
+  title: string | Localized;
   module: string;
   repository: string;
   publisher: string;
@@ -288,7 +289,8 @@ function canonical(offer: Offer): Offer {
     schemaVersion: offer.schemaVersion,
     id: offer.id,
     section: offer.section,
-    title: offer.title,
+    title:
+      typeof offer.title === "string" ? offer.title : localized(offer.title),
     module: offer.module,
     repository: offer.repository,
     publisher: offer.publisher,

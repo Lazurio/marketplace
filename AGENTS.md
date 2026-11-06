@@ -17,8 +17,9 @@ Read `README.md` and `CONTRIBUTING.md` first.
   `index.json` of whichever commit it pins, and an unknown field or value makes
   it refuse that index. A change Lazurio must understand first is a new schema
   version, landed in LazurioPlatform before here. One exception, decided on
-  2026-11-06: a screenshot's optional `locale` is part of `offer.v1`; no record
-  uses it until the Lazurio release that reads it is final
+  2026-11-06 for bilingual templates: a screenshot's optional `locale` and a
+  `title` of `{cs, en}` are part of `offer.v1`; no record uses either until the
+  Lazurio release that reads them is final
   ([LazurioPlatform#908](https://github.com/Lazurio/LazurioPlatform/pull/908),
   `CONTRIBUTING.md`).
 - Offers hold public facts only: no customer names, real company data,
