@@ -274,6 +274,54 @@ describe("an offer's sources", () => {
   });
 });
 
+describe("screens per language", () => {
+  const localized = offer({
+    screenshots: [
+      { path: "docs/screens/cs/a.webp", alt: text, locale: "cs" },
+      { path: "docs/screens/en/a.webp", alt: text, locale: "en" },
+    ],
+  });
+  const contents = (path: string) =>
+    `/repos/Example/notes/contents/${path}?ref=${commit}`;
+  const both = {
+    [contents("docs/screens/cs/a.webp")]: webp(1600),
+    [contents("docs/screens/en/a.webp")]: webp(1600),
+  };
+
+  test("both sets present in the release's tag pass", async () => {
+    const report = await verifySources(localized, repository(both));
+    expect(report.problems).toEqual([]);
+  });
+
+  test("a path of either language missing in the tag fails", async () => {
+    const report = await verifySources(
+      localized,
+      repository({ ...both, [contents("docs/screens/en/a.webp")]: null }),
+    );
+    expect(report.problems).toEqual([
+      `docs/screens/en/a.webp is missing at ${commit}`,
+    ]);
+  });
+
+  test("sets that are not as many fail", async () => {
+    const report = await verifySources(
+      offer({
+        screenshots: [
+          ...localized.screenshots,
+          { path: "docs/screens/cs/b.webp", alt: text, locale: "cs" },
+        ],
+      }),
+      repository({
+        ...both,
+        [contents("docs/screens/cs/b.webp")]: webp(1600),
+      }),
+    );
+    expect(report.problems).toEqual([
+      "the screenshots in cs (2) and en (1) are not as many",
+    ]);
+  });
+});
+
 test("namesStackProfile finds the profile's release, not a neighbour", () => {
   const link =
     "https://github.com/Lazurio/LazurioPlatform/blob/main/docs/stack-profiles.md";
