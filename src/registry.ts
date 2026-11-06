@@ -42,9 +42,58 @@ export type Offer = Readonly<{
   summary: Localized;
   features: readonly Readonly<{ title: Localized; text: Localized }>[];
   seeds: Readonly<{ empty: Seed; sample?: Seed }>;
-  screenshots: readonly Readonly<{ path: string; alt: Localized }>[];
+  screenshots: readonly Screenshot[];
   releases: readonly Release[];
 }>;
+
+/** The language of a screen's words. */
+export type Locale = "cs" | "en";
+
+/** A screen of the offered release: its path in the repository, its words
+ * and, where the template has screens per language, its language. */
+export type Screenshot = Readonly<{
+  path: string;
+  alt: Localized;
+  locale?: Locale;
+}>;
+
+/** Screens per language at most, and without one. */
+export const screenshotsPerLocale = 6;
+
+/** What the schema cannot say of an offer's screens: without a language at
+ * most six; with one, every screen names its language and Czech and English
+ * have the same number (so at most six each), and each language lists a path
+ * once. Lazurio shows the screens of the page's language, else those
+ * without one, else any. */
+export function screenshotProblems(
+  screenshots: readonly Screenshot[],
+): string[] {
+  const problems: string[] = [];
+  const keys = screenshots.map(
+    (screenshot) => `${screenshot.locale ?? ""}:${screenshot.path}`,
+  );
+  if (new Set(keys).size !== keys.length)
+    problems.push("a screenshot is listed twice");
+  const localized = screenshots.filter(
+    (screenshot) => screenshot.locale !== undefined,
+  );
+  if (localized.length === 0) {
+    if (screenshots.length > screenshotsPerLocale)
+      problems.push(
+        `at most ${screenshotsPerLocale} screenshots without a locale`,
+      );
+    return problems;
+  }
+  if (localized.length !== screenshots.length)
+    problems.push("once a screenshot names its locale, every one does");
+  const cs = localized.filter((screenshot) => screenshot.locale === "cs");
+  const en = localized.filter((screenshot) => screenshot.locale === "en");
+  if (cs.length !== en.length)
+    problems.push(
+      `the screenshots in cs (${cs.length}) and en (${en.length}) are not as many`,
+    );
+  return problems;
+}
 
 /** One file of offers/ as read: its path relative to the registry root and
  * its parsed YAML, or why it could not be read as an offer. */
@@ -182,9 +231,8 @@ export function checkOffer(entry: Entry): {
         ),
       );
   });
-  const paths = offer.screenshots.map((screenshot) => screenshot.path);
-  if (new Set(paths).size !== paths.length)
-    problems.push(problem("a screenshot is listed twice"));
+  for (const message of screenshotProblems(offer.screenshots))
+    problems.push(problem(message));
   return { offer: problems.length === 0 ? offer : null, problems };
 }
 
@@ -262,6 +310,7 @@ function canonical(offer: Offer): Offer {
     screenshots: offer.screenshots.map((screenshot) => ({
       path: screenshot.path,
       alt: localized(screenshot.alt),
+      ...(screenshot.locale === undefined ? {} : { locale: screenshot.locale }),
     })),
     releases: offer.releases.map((release) => ({
       version: release.version,

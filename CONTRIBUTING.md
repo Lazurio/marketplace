@@ -34,7 +34,15 @@ The registry accepts a repository that follows the template contract:
   generation (a new `app/v<N+1>` beside the old one, switching `default_app`,
   migrating data) and take template updates (a merge of the new tag).
 - Screens for the Marketplace card: WebP, 1600 px wide, invented content only,
-  in the repository at the release.
+  in the repository at the release. A bilingual template may give each screen
+  its language (`locale: cs` or `en`): then every screen names one, Czech and
+  English have the same number of screens (at most six each) and Lazurio shows
+  those in the page's language. Without `locale`, at most six screens shown in
+  both languages. Lazurio reads `locale` only from the release that includes
+  [LazurioPlatform#908](https://github.com/Lazurio/LazurioPlatform/pull/908);
+  an older one, the candidates of v0.1.21 among them, refuses an index with it
+  and shows its built-in copy, so an offer with `locale` is merged only after
+  that release is final.
 
 ## 2. Publish a release
 

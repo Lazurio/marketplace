@@ -107,9 +107,9 @@
       }
     },
     "screenshots": {
-      "description": "Screens of the app at the offered release: WebP files 1600 px wide in its repository, with invented content only. The first one is the card's.",
+      "description": "Screens of the app at the offered release: WebP files 1600 px wide in its repository, with invented content only. The first one is the card's. Without a language at most 6 screens. A screen may name its language (locale): then every screen names one, Czech and English have the same number of screens, at most 6 each, and Lazurio shows those in the page's language (the registry's rules, src/registry.ts). Lazurio releases before the one that reads locale refuse an index with it, so a record with locale waits for that release.",
       "type": "array",
-      "maxItems": 6,
+      "maxItems": 12,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -121,6 +121,10 @@
           },
           "alt": {
             "$ref": "#/$defs/line"
+          },
+          "locale": {
+            "description": "The language of the words on the screen; Lazurio shows the screens in the page's language, else those without one, else any.",
+            "enum": ["cs", "en"]
           }
         }
       }
