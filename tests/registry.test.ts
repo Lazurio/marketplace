@@ -151,6 +151,83 @@ describe("one offer", () => {
     expect(messages(shot("docs/screens/gallery.png"))).not.toEqual([]);
   });
 
+  test("screens without a locale stay as they were: at most six, each path once", () => {
+    const shots = (count: number) =>
+      offer({
+        screenshots: Array.from({ length: count }, (_, i) => ({
+          path: `docs/screens/${i}.webp`,
+          alt: text,
+        })),
+      });
+    expect(messages(shots(6))).toEqual([]);
+    expect(messages(shots(7))).toEqual([
+      "at most 6 screenshots without a locale",
+    ]);
+    const twice = { path: "docs/screens/a.webp", alt: text };
+    expect(messages(offer({ screenshots: [twice, twice] }))).toEqual([
+      "a screenshot is listed twice",
+    ]);
+  });
+
+  test("screens per language: every one names cs or en, both sets as many, at most six each", () => {
+    const set = (locale: string, count: number) =>
+      Array.from({ length: count }, (_, i) => ({
+        path: `docs/screens/${locale}/${i}.webp`,
+        alt: text,
+        locale,
+      }));
+    const shots = (...sets: unknown[][]) => offer({ screenshots: sets.flat() });
+    expect(messages(shots(set("cs", 4), set("en", 4)))).toEqual([]);
+    expect(messages(shots(set("cs", 6), set("en", 6)))).toEqual([]);
+    // The same file may serve both languages, once in each.
+    const plain = { path: "docs/screens/plain.webp", alt: text };
+    expect(
+      messages(
+        shots([
+          { ...plain, locale: "cs" },
+          { ...plain, locale: "en" },
+        ]),
+      ),
+    ).toEqual([]);
+    expect(
+      messages(
+        shots([
+          { ...plain, locale: "cs" },
+          { ...plain, locale: "cs" },
+        ]),
+      ),
+    ).toContain("a screenshot is listed twice");
+    expect(messages(shots(set("cs", 4), set("en", 3)))).toEqual([
+      "the screenshots in cs (4) and en (3) are not as many",
+    ]);
+    expect(messages(shots(set("cs", 2)))).toEqual([
+      "the screenshots in cs (2) and en (0) are not as many",
+    ]);
+    expect(messages(shots(set("cs", 2), set("en", 2), [plain]))).toEqual([
+      "once a screenshot names its locale, every one does",
+    ]);
+    // The schema: a known language only, at most twelve screens in all.
+    expect(messages(shots(set("de", 1)))).not.toEqual([]);
+    expect(messages(shots(set("cs", 7), set("en", 7)))).not.toEqual([]);
+  });
+
+  test("a name is one string for both languages, or {cs, en} for a bilingual template", () => {
+    expect(messages(offer({ title: "Time Tracker" }))).toEqual([]);
+    expect(
+      messages(offer({ title: { cs: "Evidence času", en: "Time Tracker" } })),
+    ).toEqual([]);
+    for (const title of [
+      "",
+      "x".repeat(61),
+      { cs: "Evidence času" },
+      { cs: "Evidence času", en: "" },
+      { cs: "x".repeat(61), en: "Time Tracker" },
+      { cs: "Evidence času", en: "Time Tracker", de: "Zeiterfassung" },
+      7,
+    ])
+      expect(messages(offer({ title }))).not.toEqual([]);
+  });
+
   test("an id is at most 32 characters, for Lazurio's 64-character prompt id", () => {
     const longest = "a".repeat(32);
     expect(
@@ -279,6 +356,45 @@ describe("the registry", () => {
     ) as unknown as Offer;
     expect(buildIndex([a, b])).toBe(buildIndex([b, shuffled]));
     expect(JSON.parse(buildIndex([a, b])).offers[0].id).toBe("atlas");
+  });
+
+  test("the index keeps a screen's locale and adds none where an offer has none", () => {
+    const plain = checkOffer(
+      entry(
+        offer({
+          screenshots: [{ path: "docs/screens/a.webp", alt: text }],
+        }),
+      ),
+    ).offer as Offer;
+    expect(JSON.parse(buildIndex([plain])).offers[0].screenshots).toEqual([
+      { path: "docs/screens/a.webp", alt: text },
+    ]);
+    const localized = checkOffer(
+      entry(
+        offer({
+          screenshots: [
+            { locale: "cs", path: "docs/screens/cs.webp", alt: text },
+            { locale: "en", path: "docs/screens/en.webp", alt: text },
+          ],
+        }),
+      ),
+    ).offer as Offer;
+    expect(
+      Object.keys(JSON.parse(buildIndex([localized])).offers[0].screenshots[0]),
+    ).toEqual(["path", "alt", "locale"]);
+  });
+
+  test("the index keeps a one-string name as it is and a bilingual one as {cs, en}", () => {
+    const named = (title: unknown) =>
+      JSON.parse(
+        buildIndex([checkOffer(entry(offer({ title }))).offer as Offer]),
+      ).offers[0].title;
+    expect(named("Notes")).toBe("Notes");
+    const both = named({ en: "Time Tracker", cs: "Evidence času" });
+    expect(Object.entries(both)).toEqual([
+      ["cs", "Evidence času"],
+      ["en", "Time Tracker"],
+    ]);
   });
 
   test("the registry's own offers are valid and index.json is current", async () => {

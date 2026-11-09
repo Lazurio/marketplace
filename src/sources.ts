@@ -1,4 +1,9 @@
-import { type Offer, offeredRelease, splitStackProfile } from "./registry";
+import {
+  type Offer,
+  offeredRelease,
+  screenshotProblems,
+  splitStackProfile,
+} from "./registry";
 
 // The registry's online rules: what the template's repository holds at the
 // release an offer names. An offer whose releases have no commit yet is
@@ -209,20 +214,23 @@ export async function verifySources(
       problems.push(`${release.generation}/bun.lock is missing at ${ref}`);
   }
 
-  for (const screenshot of offer.screenshots) {
-    const answer = await file(screenshot.path);
+  // Screens per language: both sets, as many, each path in the tag's tree.
+  problems.push(...screenshotProblems(offer.screenshots));
+  const paths = [
+    ...new Set(offer.screenshots.map((screenshot) => screenshot.path)),
+  ];
+  for (const path of paths) {
+    const answer = await file(path);
     if (answer.status !== 200) {
-      problems.push(`${screenshot.path} is missing at ${ref}`);
+      problems.push(`${path} is missing at ${ref}`);
       continue;
     }
     const width = webpWidth(answer.body);
-    if (width === null) problems.push(`${screenshot.path} is not WebP`);
+    if (width === null) problems.push(`${path} is not WebP`);
     else if (width !== screenshotWidth)
-      problems.push(
-        `${screenshot.path} is ${width} px wide, not ${screenshotWidth}`,
-      );
+      problems.push(`${path} is ${width} px wide, not ${screenshotWidth}`);
     if (answer.body.length > screenshotLimit)
-      problems.push(`${screenshot.path} is larger than 2 MiB`);
+      problems.push(`${path} is larger than 2 MiB`);
   }
   if (release.artifactDigest !== null)
     notes.push("the artifact digest is recorded but not verified yet");
