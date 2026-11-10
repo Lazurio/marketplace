@@ -1,0 +1,77 @@
+# Time Tracker, a template of the Marketplace (plan DEV-6593), published by
+# LazurioTemplates. Release 0.1.0 was published on 2026-11-09 as the annotated
+# tag v0.1.0. Its Czech name (Evidence času) and screens with a locale wait for
+# the Lazurio release that reads them (v0.1.21, LazurioPlatform#908).
+schemaVersion: lazurio.marketplace.offer.v1
+id: time-tracker
+section: app-templates
+title: Time Tracker
+module: time-tracker
+repository: LazurioTemplates/time-tracker
+publisher: LazurioTemplates
+license: MIT
+stone: profitability
+pricing: free
+summary:
+  cs: "Odpracovaný čas na projektech: časovače, ruční záznamy, přehled týdne a měsíce a export pro fakturaci."
+  en: "Time worked on projects: timers, time written by hand, week and month overviews and exports for invoicing."
+features:
+  - title:
+      cs: Časovač i ruční zápis
+      en: Timer and time by hand
+    text:
+      cs: Spustíte a zastavíte svůj časovač, nebo zapíšete den, začátek a konec. Uživatel mění své záznamy, správce aplikace i záznamy ostatních; zapomenutý časovač se po deseti hodinách zastaví sám.
+      en: Start and stop your timer, or write a day, a start and an end. A user changes their own entries, the App's administrator everyone's; a forgotten timer stops by itself after ten hours.
+  - title:
+      cs: Přehled týdne a měsíce
+      en: Week and month overview
+    text:
+      cs: Hodiny celkem a k fakturaci po dnech, projektech, klientech a lidech, i pracovní dny, kdy nikdo nic nezapsal.
+      en: Hours in total and to invoice by day, project, client and person, and the working days nobody recorded.
+  - title:
+      cs: Export pro fakturaci a mzdy
+      en: Export for invoicing and payroll
+    text:
+      cs: Záznamy i souhrn hodin podle klienta, projektu a člověka jako CSV, které tabulkový procesor otevře hned.
+      en: Entries and hours by client, project and person as a CSV your spreadsheet opens as it is.
+seeds:
+  empty:
+    label:
+      cs: Bez záznamů
+      en: No entries
+    brief:
+      cs: prázdnými daty (ukázkové klienty, projekty a záznamy nepřenášej)
+      en: empty data (do not carry the example clients, projects and entries over)
+  sample:
+    label:
+      cs: S ukázkovými záznamy
+      en: With example entries
+    brief:
+      cs: ukázkovými klienty, projekty a záznamy z vydání v jazyce Organizace
+      en: the example clients, projects and entries of the release in the Organization's language
+screenshots:
+  - path: docs/screenshots/cs/time-tracker-today.webp
+    alt:
+      cs: "Dnes: běžící časovač, ruční zápis času a záznamy týdne"
+      en: "Today: the running timer, time written by hand and the week's entries"
+  - path: docs/screenshots/cs/time-tracker-overview.webp
+    alt:
+      cs: "Přehled týdne: hodiny celkem a k fakturaci, hodiny po dnech a dny bez záznamu"
+      en: "The week's overview: hours in total and to invoice, hours by day and the days without entries"
+  - path: docs/screenshots/cs/time-tracker-entries.webp
+    alt:
+      cs: Záznamy celého týmu s filtry a exportem do CSV
+      en: The whole team's entries with filters and the CSV export
+  - path: docs/screenshots/cs/time-tracker-draft.webp
+    alt:
+      cs: Koncept se změněnými záznamy před publikací
+      en: A draft with the changed entries before publishing
+releases:
+  - version: 0.1.0
+    tag: v0.1.0
+    generation: app/v3
+    stackProfile: app-data@2026.11
+    stack: vite-react
+    bun: 1.4.4
+    commit: 73e1caa54eecdaacd7e3606a845c2f0d8813dc04
+    artifactDigest: null

@@ -1,0 +1,91 @@
+# Quotes, a template of the Marketplace (plan DEV-6593), published by
+# LazurioTemplates. Release 0.1.0 was published on 2026-11-10 as the annotated
+# tag v0.1.0. Its Czech name (Cenové nabídky) and screens with a locale wait for
+# the Lazurio release that reads them (v0.1.21, LazurioPlatform#908).
+schemaVersion: lazurio.marketplace.offer.v1
+id: quotes
+section: app-templates
+title: Quotes
+module: quotes
+repository: LazurioTemplates/quotes
+publisher: LazurioTemplates
+license: MIT
+stone: deal
+pricing: free
+summary:
+  cs: "Ceník a cenové nabídky pro zákazníky: DPH spočítané na haléř, verze, tisk do PDF a připravený e-mail."
+  en: "A price list and quotes for your customers: VAT to the haléř, versions, print to PDF and a ready e-mail."
+features:
+  - title:
+      cs: Ceník a import od dodavatele
+      en: Price list and supplier imports
+    text:
+      cs: Položky s nákupní a prodejní cenou bez DPH, sazbou DPH a historií cen. Ceník dodavatele z CSV projde náhledem nových, změněných a chybných řádků; zapíší se jen ty, které vyberete.
+      en: Items with purchase and sale prices without VAT, a VAT rate and a price history. A supplier's CSV price list goes through a preview of new, changed and invalid rows; only the rows you choose are written.
+  - title:
+      cs: Nabídky s verzemi
+      en: Quotes with versions
+    text:
+      cs: Řádky z ceníku i mimo něj, slevy na řádek i celou nabídku, DPH po sazbách a stavy od konceptu po přijetí. Odeslaná nabídka se už nemění; úprava je nová verze.
+      en: Lines from the price list or outside it, discounts per line and on the whole quote, VAT per rate and states from draft to accepted. A quote that went out never changes; an edit is a new version.
+  - title:
+      cs: Kontrola, tisk a e-mail
+      en: Check, print and e-mail
+    text:
+      cs: Před odesláním nabídka upozorní třeba na chybějící cenu, prošlou platnost nebo nízkou marži. Tiskovou stránku uložíte do PDF a text e-mailu je připravený; odeslat ho je vždy váš krok.
+      en: Before sending, a quote points out a missing price, an expired validity or a low margin, for example. You save the print page as PDF and the e-mail text is ready; sending it is always your step.
+  - title:
+      cs: Práce s agentem
+      en: Work with your agent
+    text:
+      cs: Agent připraví nabídku z poptávky, aktualizuje ceník podle dodavatele a zkontroluje nabídku před odesláním. Každá změna je nejdřív koncept, který publikujete jedním krokem.
+      en: Your agent prepares a quote from an inquiry, updates the price list from a supplier's and checks a quote before it goes out. Every change is a draft first, which you publish in one step.
+seeds:
+  empty:
+    label:
+      cs: Bez ceníku a nabídek
+      en: No price list or quotes
+    brief:
+      cs: prázdnými daty (ukázkový ceník, zákazníky a nabídky nepřenášej)
+      en: empty data (do not carry the example price list, customers and quotes over)
+  sample:
+    label:
+      cs: S ukázkovými nabídkami
+      en: With example quotes
+    brief:
+      cs: ukázkovým ceníkem, zákazníky a nabídkami z vydání v mém jazyce
+      en: the example price list, customers and quotes from the release, in my language
+screenshots:
+  - path: docs/screenshots/cs/overview.webp
+    alt:
+      cs: "Přehled: nabídky čekající na odpověď, rozpracované koncepty a ceník"
+      en: "The overview: quotes waiting for an answer, drafts and the price list"
+  - path: docs/screenshots/cs/quote.webp
+    alt:
+      cs: Odeslaná nabídka ve druhé verzi s řádky, slevou, DPH a marží
+      en: A sent quote in its second version with its lines, a discount, VAT and the margin
+  - path: docs/screenshots/cs/editor.webp
+    alt:
+      cs: Úprava konceptu nabídky se souhrnem DPH po sazbách
+      en: Editing a draft quote with the VAT summary per rate
+  - path: docs/screenshots/cs/price-list.webp
+    alt:
+      cs: Ceník s kategoriemi, nákupní a prodejní cenou a marží
+      en: The price list with categories, purchase and sale prices and margins
+  - path: docs/screenshots/cs/import.webp
+    alt:
+      cs: Náhled změn při importu ceníku dodavatele
+      en: The preview of changes when importing a supplier's price list
+  - path: docs/screenshots/cs/print.webp
+    alt:
+      cs: Tisková stránka nabídky pro uložení do PDF
+      en: The print page of a quote, to save as PDF
+releases:
+  - version: 0.1.0
+    tag: v0.1.0
+    generation: app/v3
+    stackProfile: app-data@2026.11
+    stack: vite-react
+    bun: 1.4.4
+    commit: e3fa43cfe1430e35d9466e621121ebe09ae54881
+    artifactDigest: null

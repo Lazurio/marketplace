@@ -1,6 +1,8 @@
 # Design System, the second template of the Marketplace (plan DEV-6593), published by
 # LazurioTemplates with a clean history (decided 2026-11-03). Release 1.0.0 was
-# published on 2026-11-03 as the annotated tag v1.0.0.
+# published on 2026-11-03 and 2.0.0 on 2026-11-09, each as an annotated tag. The
+# card follows 2.0.0; its screens per language wait for the Lazurio release that
+# reads locale (v0.1.21, LazurioPlatform#908), until then the Czech set without one.
 schemaVersion: lazurio.marketplace.offer.v1
 id: design-system
 section: app-templates
@@ -12,64 +14,76 @@ license: MIT
 stone: palette
 pricing: free
 summary:
-  cs: Barvy, písmo, komponenty a pravidla psaní vaší Organizace na jednom místě.
-  en: Your Organization's colours, type, components and writing rules in one place.
+  cs: Barvy, písmo, komponenty a pravidla vaší Organizace na jednom místě, pro Astro i React, česky i anglicky.
+  en: Your Organization's colours, type, components and rules in one place, for Astro and React, in Czech and English.
 features:
   - title:
-      cs: Základy značky
-      en: Brand foundations
+      cs: Značka a tokeny
+      en: Brand and tokens
     text:
-      cs: Barvy, typografie, mezery a hlas značky jako tokeny. Testy hlídají, že dvojice barev, které komponenty používají, mají kontrast WCAG AA ve světlém i tmavém režimu.
-      en: Colours, type, spacing and the brand's voice as tokens. Tests make sure the colour pairs the components use reach WCAG AA contrast in light and dark mode.
+      cs: Celá značka na jednom místě, paleta, písma, logo a ilustrace. Z ní vznikají barevné role pro světlý i tmavý režim a testy hlídají, že dvojice barev mají kontrast podle WCAG.
+      en: The whole brand in one place, its palette, fonts, logo and illustrations. It gives the colour roles for light and dark mode, and tests check that colour pairs reach WCAG contrast.
   - title:
-      cs: Komponenty a vzory
-      en: Components and patterns
+      cs: Komponenty pro Astro i React
+      en: Components for Astro and React
     text:
-      cs: Tlačítka, formuláře, tabulky, dialogy a další komponenty se stavy a přístupností, a vzory jako validace formulářů nebo nevratné akce.
-      en: Buttons, inputs, tables, dialogs and other components with their states and accessibility, and patterns such as form validation and irreversible actions.
+      cs: Tlačítka, formulářové prvky, tabulky, dialogy, karty, navigace a další komponenty se stejnými vlastnostmi v Astru i Reactu. U každé je ukázka v obou režimech, stavy, použití a kód.
+      en: Buttons, form fields, tables, dialogs, cards, navigation and more, with the same props in Astro and React. Each has an example in both modes, its states, its use and its code.
   - title:
-      cs: Jeden zdroj pro lidi i agenta
+      cs: Jeden zdroj pro lidi i agenty
       en: One source for people and agents
     text:
-      cs: Agent ani kolega nevymýšlí barvy a rozvržení znovu. Web, prezentace, dokumenty i interní nástroje vycházejí ze stejných pravidel.
-      en: Neither your agent nor a colleague invents colours and layouts again. The website, presentations, documents and internal tools follow the same rules.
+      cs: Agent ani kolega nevymýšlí barvy a rozvržení znovu, řídí se pravidly design systému. Další moduly přidají design system jako balíček na vydané verzi.
+      en: Neither your agent nor a colleague invents colours and layouts again; they follow the rules of the design system. Other modules add the design system as a package at a released version.
 seeds:
   empty:
     label:
       cs: Vlastní značkou
       en: Your own brand
     brief:
-      cs: značkou mé Organizace (ukázkovou značku nahraď podle INITIALIZATION.md)
-      en: my Organization's brand (replace the example brand following INITIALIZATION.md)
+      cs: značkou mé Organizace (ukázkovou značku Example v brand/ nahraď vlastní)
+      en: my Organization's brand (replace the example brand Example in brand/ with its own)
   sample:
     label:
       cs: Ukázkovou značkou
       en: The example brand
     brief:
-      cs: ukázkovou značkou z vydání
-      en: the example brand from the release
+      cs: ukázkovou značkou Example z vydání
+      en: the example brand Example from the release
 screenshots:
-  - path: docs/screenshots/overview.webp
+  - path: docs/screenshots/cs/overview.webp
     alt:
-      cs: Přehled design systému
-      en: The overview of the design system
-  - path: docs/screenshots/components-gallery.webp
+      cs: Přehled design systému s ukázkou ve světlém i tmavém režimu
+      en: The overview of the design system with a sample in light and dark mode
+  - path: docs/screenshots/cs/colors.webp
     alt:
-      cs: Galerie komponent
-      en: The gallery of components
-  - path: docs/screenshots/tokens-dark.webp
+      cs: Paleta značky a barevné role
+      en: The brand's palette and colour roles
+  - path: docs/screenshots/cs/components-button.webp
     alt:
-      cs: Barevné tokeny v tmavém režimu s kontrastem
-      en: The colour tokens in dark mode with their contrast
-  - path: docs/screenshots/screen-experiments.webp
+      cs: Tlačítko se svými stavy ve světlém i tmavém režimu
+      en: The button with its states in light and dark mode
+  - path: docs/screenshots/cs/components-form.webp
     alt:
-      cs: Ukázková obrazovka postavená z komponent
-      en: An example screen built from the components
-  - path: docs/screenshots/screen-stop-or-scale-dialog.webp
+      cs: Formulářové prvky s nápovědou a chybou ve světlém i tmavém režimu
+      en: Form fields with help text and an error in light and dark mode
+  - path: docs/screenshots/cs/app-screen.webp
     alt:
-      cs: Dialog nevratné akce na ukázkové obrazovce
-      en: The dialog of an irreversible action on an example screen
+      cs: Ukázková obrazovka aplikace postavená jen z komponent
+      en: An example app screen built only from the components
+  - path: docs/screenshots/cs/app-screen-dark.webp
+    alt:
+      cs: Stejná obrazovka aplikace v tmavém režimu
+      en: The same app screen in dark mode
 releases:
+  - version: 2.0.0
+    tag: v2.0.0
+    generation: app/v1
+    stackProfile: content@2026.11
+    stack: astro
+    bun: 1.4.4
+    commit: 05bc729581bd1aa1060b73fe8e03b3c38a56dcd3
+    artifactDigest: null
   - version: 1.0.0
     tag: v1.0.0
     generation: app/v1

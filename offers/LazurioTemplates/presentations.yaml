@@ -1,7 +1,10 @@
 # Presentations, the pilot offer Lazurio carried in its own code (plan DEV-6593),
 # the third template of the Marketplace. It moved from TemplatesRozjedeme-ai with a
 # clean history and is published by LazurioTemplates (decided 2026-11-03).
-# Release 0.1.0 was published on 2026-11-03 as the annotated tag v0.1.0.
+# Release 0.1.0 was published on 2026-11-03, 0.1.1 on 2026-11-08 and 0.2.0 on
+# 2026-11-10, each as an annotated tag. The card follows 0.2.0; its screens per
+# language wait for the Lazurio release that reads locale (v0.1.21,
+# LazurioPlatform#908), until then the Czech set without one.
 schemaVersion: lazurio.marketplace.offer.v1
 id: presentations
 section: app-templates
@@ -13,27 +16,27 @@ license: MIT
 stone: presentation
 pricing: free
 summary:
-  cs: Knihovna prezentací, které tvoříte se svým agentem.
-  en: A library of presentations you create with your agent.
+  cs: Prezentace, které tvoříte se svým agentem z vlastních podkladů, česky i anglicky.
+  en: Presentations you create with your agent from your own sources, in Czech and English.
 features:
   - title:
-      cs: Knihovna
-      en: Library
+      cs: Slidy ze zdroje
+      en: Slides from a source
     text:
-      cs: Všechny prezentace na jednom místě, u každé náhled prvního slidu a podklady, ze kterých vznikla.
-      en: Every presentation in one place, with a preview of its first slide and the sources it was built from.
+      cs: Agent napíše prezentaci z vašich podkladů jako krátký strukturovaný soubor a jeden příkaz z něj sestaví slidy. Jedenáct typů slidů od titulního přes metriky s grafem po závěrečný.
+      en: Your agent writes a presentation from your sources as a short structured file, and one command builds the slides. Eleven slide types, from the title through metrics with a chart to the closing.
   - title:
-      cs: Promítání a PDF
-      en: Presenting and PDF
+      cs: Promítání, video a PDF
+      en: Presenting, video and PDF
     text:
-      cs: Slidy promítáte v prohlížeči a listujete jimi šipkami. Do PDF je vytisknete ve formátu 16:9.
-      en: Present the slides in the browser and move through them with the arrow keys. Print them to 16:9 PDF pages.
+      cs: Slidy promítáte v prohlížeči na celou obrazovku a listujete šipkami nebo přejetím. Videa jsou místní soubory se zvukem jen na tlačítko; do PDF vytisknete stránku 16:9 na každý slide.
+      en: Present the slides full screen in the browser and move through them with the arrow keys or a swipe. Videos are local files with sound only on their button; print one 16:9 PDF page per slide.
   - title:
-      cs: Tvorba s agentem
-      en: Created with your agent
+      cs: Osobní verze pro zájemce
+      en: A personal version for each prospect
     text:
-      cs: Řekněte agentovi, komu je prezentace určená a z čeho má vycházet. Navrhne osnovu, připraví slidy z podkladů vaší Organizace a dá vám je ke kontrole.
-      en: Tell the agent who the presentation is for and what it should draw on. It proposes an outline, drafts the slides from your Organization's sources and hands them to you for review.
+      cs: Odkaz se jménem zájemce a jeho organizace ukáže na titulním a závěrečném slidu „Připraveno pro …“. Nic se neukládá; odkaz sestavíte v detailu prezentace.
+      en: A link with the prospect's name and organization shows “Prepared for …” on the title and closing slides. Nothing is stored; the presentation's detail builds the link.
 seeds:
   empty:
     label:
@@ -41,32 +44,56 @@ seeds:
       en: An empty library
     brief:
       cs: prázdnou knihovnou (ukázkovou prezentaci nepřenášej)
-      en: an empty library (do not carry the example presentation over)
+      en: an empty library (do not carry the sample presentation over)
   sample:
     label:
       cs: Ukázkovou prezentací
-      en: An example presentation
+      en: A sample presentation
     brief:
       cs: ukázkovou prezentací z vydání
-      en: the example presentation from the release
+      en: the sample presentation from the release
 screenshots:
-  - path: docs/screenshots/library.webp
+  - path: docs/screenshots/cs/library.webp
     alt:
       cs: Knihovna s náhledem prvního slidu ukázkové prezentace
-      en: The library with the first-slide preview of the example presentation
-  - path: docs/screenshots/detail.webp
+      en: The library with the first-slide preview of the sample presentation
+  - path: docs/screenshots/cs/detail.webp
     alt:
-      cs: Detail prezentace s jejím účelem a podklady
-      en: A presentation's detail with its purpose and sources
-  - path: docs/screenshots/agent-brief.webp
+      cs: Detail prezentace s jejím cílem a osobní verzí pro zájemce
+      en: A presentation's detail with its goal and a personal version for a prospect
+  - path: docs/screenshots/cs/agent-brief.webp
     alt:
       cs: Zadání pro agenta k nové prezentaci
       en: The brief for your agent to create a presentation
-  - path: docs/screenshots/slide.webp
+  - path: docs/screenshots/cs/slide-title.webp
     alt:
-      cs: Slide ukázkové prezentace při promítání
-      en: A slide of the example presentation while presenting
+      cs: Titulní slide osobní verze se jménem zájemce
+      en: The title slide of a personal version with the prospect's name
+  - path: docs/screenshots/cs/slide-metrics.webp
+    alt:
+      cs: Slide s metrikami a grafem růstu
+      en: A metrics slide with a growth chart
+  - path: docs/screenshots/cs/slide-video.webp
+    alt:
+      cs: Slide s videem a tlačítky přehrávání
+      en: A video slide with its playback buttons
 releases:
+  - version: 0.2.0
+    tag: v0.2.0
+    generation: app/v1
+    stackProfile: app@2026.11
+    stack: vite-react
+    bun: 1.4.4
+    commit: 2629dce5a7c3108bc88c2d1f3ec4f539356ac63f
+    artifactDigest: null
+  - version: 0.1.1
+    tag: v0.1.1
+    generation: app/v1
+    stackProfile: app@2026.11
+    stack: vite-react
+    bun: 1.4.4
+    commit: 68f539df31ad46ac938ae71346e7b3b17cd5b525
+    artifactDigest: null
   - version: 0.1.0
     tag: v0.1.0
     generation: app/v1

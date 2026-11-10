@@ -1,0 +1,81 @@
+# Website, a template of the Marketplace (plan DEV-6593), published by
+# LazurioTemplates. Release 0.1.0 was published on 2026-11-09 as the annotated
+# tag v0.1.0. One set of screens without a locale until the Lazurio release
+# that reads locale (v0.1.21, LazurioPlatform#908).
+schemaVersion: lazurio.marketplace.offer.v1
+id: website
+section: app-templates
+title: Website
+module: website
+repository: LazurioTemplates/website
+publisher: LazurioTemplates
+license: MIT
+stone: website
+pricing: free
+summary:
+  cs: "Web vaší firmy: stránky, služby, aktuality a kontakty, které upravujete vy i váš agent."
+  en: "Your company's website: pages, services, news and contacts that you and your agent edit."
+features:
+  - title:
+      cs: Stránky, služby, aktuality
+      en: Pages, services, news
+    text:
+      cs: Úvodní stránka, služby s cenami, aktuality a kontakty. Obsah leží v souborech, které upravíte bez programování.
+      en: A home page, services with prices, news and contacts. The content lies in files you change without programming.
+  - title:
+      cs: Úpravy s agentem
+      en: Edited with your agent
+    text:
+      cs: Napište ‚oprav tuhle větu‘ nebo ‚napiš aktualitu‘. Agent ví, kde text leží, ukáže výsledek v prohlížeči a připraví změnu ke schválení.
+      en: Write ‘fix this sentence’ or ‘write a news item’. Your agent knows where the text lies, shows the result in a browser and prepares the change for your approval.
+  - title:
+      cs: Rychlý a dohledatelný
+      en: Fast and findable
+    text:
+      cs: Statické stránky, popisy pro vyhledávače a náhledy odkazů, mapa webu, přístupnost a vzhled z vašeho Design Systemu.
+      en: Static pages, descriptions for search engines and link previews, a sitemap, accessibility and the look of your Design System.
+seeds:
+  empty:
+    label:
+      cs: Vlastním obsahem
+      en: Your own content
+    brief:
+      cs: vlastním obsahem mé Organizace (ukázkový web firmy Example nepřenášej)
+      en: my Organization's own content (do not carry the Example website over)
+  sample:
+    label:
+      cs: Ukázkovým webem
+      en: The example website
+    brief:
+      cs: ukázkovým webem vymyšlené firmy Example z vydání
+      en: the example website of the invented company Example from the release
+screenshots:
+  - path: docs/screenshots/cs/home.webp
+    alt:
+      cs: Úvodní stránka ukázkového webu vymyšlené firmy Example
+      en: The home page of the example website of the invented company Example
+  - path: docs/screenshots/cs/services.webp
+    alt:
+      cs: Přehled služeb s cenami
+      en: The overview of services with their prices
+  - path: docs/screenshots/cs/service.webp
+    alt:
+      cs: Stránka služby s cenou, tím, co zákazník dostane, a jak spolupráce probíhá
+      en: A service's page with its price, what the customer gets and how the work goes
+  - path: docs/screenshots/cs/news.webp
+    alt:
+      cs: Aktualita s grafem
+      en: A news item with a chart
+  - path: docs/screenshots/cs/contact.webp
+    alt:
+      cs: Kontakty v tmavém režimu s adresou, e-mailem, telefonem a lidmi, se kterými mluvit
+      en: The contact page in dark mode with the address, e-mail, phone and the people to talk to
+releases:
+  - version: 0.1.0
+    tag: v0.1.0
+    generation: app/v2
+    stackProfile: content@2026.11
+    stack: astro
+    bun: 1.4.4
+    commit: ce9e9e66bbdcab717779ad40af21969cf2473691
+    artifactDigest: null

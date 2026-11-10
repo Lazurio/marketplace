@@ -13,38 +13,38 @@
       "stone": "palette",
       "pricing": "free",
       "summary": {
-        "cs": "Barvy, písmo, komponenty a pravidla psaní vaší Organizace na jednom místě.",
-        "en": "Your Organization's colours, type, components and writing rules in one place."
+        "cs": "Barvy, písmo, komponenty a pravidla vaší Organizace na jednom místě, pro Astro i React, česky i anglicky.",
+        "en": "Your Organization's colours, type, components and rules in one place, for Astro and React, in Czech and English."
       },
       "features": [
         {
           "title": {
-            "cs": "Základy značky",
-            "en": "Brand foundations"
+            "cs": "Značka a tokeny",
+            "en": "Brand and tokens"
           },
           "text": {
-            "cs": "Barvy, typografie, mezery a hlas značky jako tokeny. Testy hlídají, že dvojice barev, které komponenty používají, mají kontrast WCAG AA ve světlém i tmavém režimu.",
-            "en": "Colours, type, spacing and the brand's voice as tokens. Tests make sure the colour pairs the components use reach WCAG AA contrast in light and dark mode."
+            "cs": "Celá značka na jednom místě, paleta, písma, logo a ilustrace. Z ní vznikají barevné role pro světlý i tmavý režim a testy hlídají, že dvojice barev mají kontrast podle WCAG.",
+            "en": "The whole brand in one place, its palette, fonts, logo and illustrations. It gives the colour roles for light and dark mode, and tests check that colour pairs reach WCAG contrast."
           }
         },
         {
           "title": {
-            "cs": "Komponenty a vzory",
-            "en": "Components and patterns"
+            "cs": "Komponenty pro Astro i React",
+            "en": "Components for Astro and React"
           },
           "text": {
-            "cs": "Tlačítka, formuláře, tabulky, dialogy a další komponenty se stavy a přístupností, a vzory jako validace formulářů nebo nevratné akce.",
-            "en": "Buttons, inputs, tables, dialogs and other components with their states and accessibility, and patterns such as form validation and irreversible actions."
+            "cs": "Tlačítka, formulářové prvky, tabulky, dialogy, karty, navigace a další komponenty se stejnými vlastnostmi v Astru i Reactu. U každé je ukázka v obou režimech, stavy, použití a kód.",
+            "en": "Buttons, form fields, tables, dialogs, cards, navigation and more, with the same props in Astro and React. Each has an example in both modes, its states, its use and its code."
           }
         },
         {
           "title": {
-            "cs": "Jeden zdroj pro lidi i agenta",
+            "cs": "Jeden zdroj pro lidi i agenty",
             "en": "One source for people and agents"
           },
           "text": {
-            "cs": "Agent ani kolega nevymýšlí barvy a rozvržení znovu. Web, prezentace, dokumenty i interní nástroje vycházejí ze stejných pravidel.",
-            "en": "Neither your agent nor a colleague invents colours and layouts again. The website, presentations, documents and internal tools follow the same rules."
+            "cs": "Agent ani kolega nevymýšlí barvy a rozvržení znovu, řídí se pravidly design systému. Další moduly přidají design system jako balíček na vydané verzi.",
+            "en": "Neither your agent nor a colleague invents colours and layouts again; they follow the rules of the design system. Other modules add the design system as a package at a released version."
           }
         }
       ],
@@ -55,8 +55,8 @@
             "en": "Your own brand"
           },
           "brief": {
-            "cs": "značkou mé Organizace (ukázkovou značku nahraď podle INITIALIZATION.md)",
-            "en": "my Organization's brand (replace the example brand following INITIALIZATION.md)"
+            "cs": "značkou mé Organizace (ukázkovou značku Example v brand/ nahraď vlastní)",
+            "en": "my Organization's brand (replace the example brand Example in brand/ with its own)"
           }
         },
         "sample": {
@@ -65,49 +65,66 @@
             "en": "The example brand"
           },
           "brief": {
-            "cs": "ukázkovou značkou z vydání",
-            "en": "the example brand from the release"
+            "cs": "ukázkovou značkou Example z vydání",
+            "en": "the example brand Example from the release"
           }
         }
       },
       "screenshots": [
         {
-          "path": "docs/screenshots/overview.webp",
+          "path": "docs/screenshots/cs/overview.webp",
           "alt": {
-            "cs": "Přehled design systému",
-            "en": "The overview of the design system"
+            "cs": "Přehled design systému s ukázkou ve světlém i tmavém režimu",
+            "en": "The overview of the design system with a sample in light and dark mode"
           }
         },
         {
-          "path": "docs/screenshots/components-gallery.webp",
+          "path": "docs/screenshots/cs/colors.webp",
           "alt": {
-            "cs": "Galerie komponent",
-            "en": "The gallery of components"
+            "cs": "Paleta značky a barevné role",
+            "en": "The brand's palette and colour roles"
           }
         },
         {
-          "path": "docs/screenshots/tokens-dark.webp",
+          "path": "docs/screenshots/cs/components-button.webp",
           "alt": {
-            "cs": "Barevné tokeny v tmavém režimu s kontrastem",
-            "en": "The colour tokens in dark mode with their contrast"
+            "cs": "Tlačítko se svými stavy ve světlém i tmavém režimu",
+            "en": "The button with its states in light and dark mode"
           }
         },
         {
-          "path": "docs/screenshots/screen-experiments.webp",
+          "path": "docs/screenshots/cs/components-form.webp",
           "alt": {
-            "cs": "Ukázková obrazovka postavená z komponent",
-            "en": "An example screen built from the components"
+            "cs": "Formulářové prvky s nápovědou a chybou ve světlém i tmavém režimu",
+            "en": "Form fields with help text and an error in light and dark mode"
           }
         },
         {
-          "path": "docs/screenshots/screen-stop-or-scale-dialog.webp",
+          "path": "docs/screenshots/cs/app-screen.webp",
           "alt": {
-            "cs": "Dialog nevratné akce na ukázkové obrazovce",
-            "en": "The dialog of an irreversible action on an example screen"
+            "cs": "Ukázková obrazovka aplikace postavená jen z komponent",
+            "en": "An example app screen built only from the components"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/app-screen-dark.webp",
+          "alt": {
+            "cs": "Stejná obrazovka aplikace v tmavém režimu",
+            "en": "The same app screen in dark mode"
           }
         }
       ],
       "releases": [
+        {
+          "version": "2.0.0",
+          "tag": "v2.0.0",
+          "generation": "app/v1",
+          "stackProfile": "content@2026.11",
+          "stack": "astro",
+          "bun": "1.4.4",
+          "commit": "05bc729581bd1aa1060b73fe8e03b3c38a56dcd3",
+          "artifactDigest": null
+        },
         {
           "version": "1.0.0",
           "tag": "v1.0.0",
@@ -116,6 +133,132 @@
           "stack": "astro",
           "bun": "1.4.4",
           "commit": "fc64dc06b563587b215481c9d54b41f0d045aba8",
+          "artifactDigest": null
+        }
+      ]
+    },
+    {
+      "schemaVersion": "lazurio.marketplace.offer.v1",
+      "id": "knowledgebase",
+      "section": "app-templates",
+      "title": "Knowledgebase",
+      "module": "knowledgebase",
+      "repository": "LazurioTemplates/knowledgebase",
+      "publisher": "LazurioTemplates",
+      "license": "MIT",
+      "stone": "knowledge",
+      "pricing": "free",
+      "summary": {
+        "cs": "Postupy, znalosti, slovník a rozhodnutí vaší Organizace na jednom místě, pro lidi i agenty.",
+        "en": "Your Organization's procedures, knowledge, glossary and decisions in one place, for people and agents."
+      },
+      "features": [
+        {
+          "title": {
+            "cs": "Postupy, slovník a rozhodnutí",
+            "en": "Procedures, glossary and decisions"
+          },
+          "text": {
+            "cs": "Oddíly O Organizaci, Lidé a role, Procesy a postupy, Postupy pro agenty, Slovník a Rozhodnutí. Každý oddíl má přehled s tím, co do něj patří, a osnovou stránky.",
+            "en": "Sections About the Organization, People and roles, Processes and procedures, Procedures for agents, Glossary and Decisions. Each has an overview with what belongs there and the outline of a page."
+          }
+        },
+        {
+          "title": {
+            "cs": "Agent hledá, než odpoví",
+            "en": "Your agent searches before it answers"
+          },
+          "text": {
+            "cs": "Než agent odpoví, jak to ve vaší Organizaci chodí, hledá v Knowledgebase a uvede stránku. Na ‚zapiš postup‘, ‚zapiš rozhodnutí‘ nebo ‚doplň slovník‘ připraví stránku podle osnovy a dá vám ji ke kontrole.",
+            "en": "Before your agent answers how your Organization works, it searches the knowledge base and names the page. Asked to write a procedure, record a decision or add a term, it drafts the page from the outline for your review."
+          }
+        },
+        {
+          "title": {
+            "cs": "Ověřené a snadno k nalezení",
+            "en": "Trusted and easy to find"
+          },
+          "text": {
+            "cs": "U každé stránky vidíte, jestli platí, kdo za ni odpovídá a kdy byla naposledy ověřena. Hledání projde všechny stránky včetně jiných názvů pojmů; vzhled dává design system vaší Organizace.",
+            "en": "Every page shows whether it is valid, who keeps it true and when it was last confirmed. Search covers every page, including the other names of terms; the look comes from your Organization's design system."
+          }
+        }
+      ],
+      "seeds": {
+        "empty": {
+          "label": {
+            "cs": "Prázdnou, jen strukturou",
+            "en": "Empty, structure only"
+          },
+          "brief": {
+            "cs": "prázdnou Knowledgebase jen se strukturou oddílů (ukázku Example nepřenášej)",
+            "en": "an empty knowledge base with the structure of its sections only (do not carry the Example sample over)"
+          }
+        },
+        "sample": {
+          "label": {
+            "cs": "S ukázkou Example",
+            "en": "With the Example sample"
+          },
+          "brief": {
+            "cs": "ukázkou vymyšlené Organizace Example z vydání",
+            "en": "the sample of the invented Organization Example from the release"
+          }
+        }
+      },
+      "screenshots": [
+        {
+          "path": "docs/screenshots/cs/procedure.webp",
+          "alt": {
+            "cs": "Postup s jeho údaji (platí, kdo odpovídá, kdy byl ověřen, zdroje) a navigací oddílů",
+            "en": "A procedure with its details (valid, owner, last confirmed, sources) and the navigation of the sections"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/home.webp",
+          "alt": {
+            "cs": "Úvodní stránka s oddíly a s tím, jak hledat a jak něco přidat",
+            "en": "The home page with the sections, how to search and how to add something"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/agent-procedure-outline.webp",
+          "alt": {
+            "cs": "Oddíl Postupy pro agenty s osnovou stránky",
+            "en": "The section Procedures for agents with the outline of a page"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/decision.webp",
+          "alt": {
+            "cs": "Číslované rozhodnutí s tím, kdo a kdy rozhodl, souvislostmi a důsledky",
+            "en": "A numbered decision with who decided and when, its context and its consequences"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/glossary-dark.webp",
+          "alt": {
+            "cs": "Pojem ve slovníku s jeho jinými názvy, v tmavém režimu",
+            "en": "A glossary term with its other names, in dark mode"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/search.webp",
+          "alt": {
+            "cs": "Hledání, které najde pojem i podle jeho jiného názvu",
+            "en": "Search that finds a term by its other name too"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "version": "0.1.0",
+          "tag": "v0.1.0",
+          "generation": "app/v2",
+          "stackProfile": "content@2026.11",
+          "stack": "astro-starlight",
+          "bun": "1.4.4",
+          "commit": "342140764dfe93381b21f6b326b368bb40a5206f",
           "artifactDigest": null
         }
       ]
@@ -132,28 +275,28 @@
       "stone": "control",
       "pricing": "free",
       "summary": {
-        "cs": "Plány a roadmapy vaší Organizace na jednom místě, se schvalováním změn.",
-        "en": "Your Organization's plans and roadmaps in one place, with reviewed changes."
+        "cs": "Plánujte práci lidí a agentů na jednom místě: plány s cílem a kritérii přijetí, roadmapy v čase a změny, které schválíte jedním krokem.",
+        "en": "Plan the work of people and agents in one place: plans with a goal and acceptance criteria, roadmaps over time, and changes you approve in one step."
       },
       "features": [
         {
           "title": {
-            "cs": "Plány",
-            "en": "Plans"
+            "cs": "Plány s cílem",
+            "en": "Plans with a goal"
           },
           "text": {
-            "cs": "Každý plán má svůj kód, cíl, rozsah, rozhodnutí a kritéria přijetí. Vidíte, co se dělá, proč a pro koho.",
-            "en": "Every plan has its code, goal, scope, decisions and acceptance criteria. You see what is being done, why and for whom."
+            "cs": "Každý plán říká, co se má změnit a proč, pro koho a podle jakých kritérií přijetí poznáte, že je hotovo. Lidé i agenti pracují podle stejného zadání.",
+            "en": "Every plan says what should change and why, for whom, and by which acceptance criteria you know it is done, so people and agents work from the same brief."
           }
         },
         {
           "title": {
-            "cs": "Roadmapy",
-            "en": "Roadmaps"
+            "cs": "Roadmapy a kdo na čem pracuje",
+            "en": "Roadmaps and who works on what"
           },
           "text": {
-            "cs": "Plány seřazené do kroků v čase, s prioritami, dalšími kroky, které můžou začít, a dosavadním postupem.",
-            "en": "Plans ordered into steps over time, with priorities, the next steps that can start and the progress so far."
+            "cs": "Roadmapy řadí plány do kroků v čase a ukazují, co může začít teď. Plán má vlastníka, úkoly mají řešitele a u roadmapy vidíte, kteří agenti práci dělají a kdo ji kontroluje.",
+            "en": "Roadmaps order plans into steps over time and show what can start now. Plans have owners, tasks have assignees, and each roadmap names the agents doing the work and who reviews it."
           }
         },
         {
@@ -162,18 +305,8 @@
             "en": "Draft and publish"
           },
           "text": {
-            "cs": "Každá úprava je nejdřív koncept. Změněné záznamy zkontrolujete srozumitelně popsané a publikujete je jako jednu změnu, nebo je vrátíte.",
-            "en": "Every edit is a draft first. You review the changed records in plain words and publish them as one change, or return them."
-          }
-        },
-        {
-          "title": {
-            "cs": "Data ve vašem repozitáři",
-            "en": "Data in your repository"
-          },
-          "text": {
-            "cs": "Plány a roadmapy leží v datovém repozitáři vaší Organizace. Agent je čte a zapisuje stejně jako vy.",
-            "en": "Plans and roadmaps live in your Organization's data repository. Your agent reads and writes them as you do."
+            "cs": "Každá úprava je nejdřív koncept. Změněné záznamy zkontrolujete srozumitelně popsané a publikujete je jako jednu změnu, nebo je vrátíte. Data zůstávají v repozitáři vaší Organizace.",
+            "en": "Every edit is a draft first. You review the changed records in plain words and publish them as one change, or return them. The data stays in your Organization's repository."
           }
         }
       ],
@@ -194,35 +327,35 @@
             "en": "With example plans"
           },
           "brief": {
-            "cs": "ukázkovými plány z vydání",
-            "en": "the example plans from the release"
+            "cs": "ukázkovými plány z vydání v mém jazyce",
+            "en": "the example plans from the release, in my language"
           }
         }
       },
       "screenshots": [
         {
-          "path": "docs/screenshots/mission-control-overview.webp",
+          "path": "docs/screenshots/cs/mission-control-overview.webp",
           "alt": {
-            "cs": "Přehled s plány podle stavu, hlavní roadmapou a jejími dalšími kroky",
-            "en": "The overview with plans by state, the main roadmap and its next steps"
+            "cs": "Přehled: k čemu Mission Control je, plány podle stavu, hlavní roadmapa a její další kroky",
+            "en": "The overview: what Mission Control is for, plans by state, the main roadmap and its next steps"
           }
         },
         {
-          "path": "docs/screenshots/mission-control-roadmap.webp",
+          "path": "docs/screenshots/cs/mission-control-roadmap.webp",
           "alt": {
-            "cs": "Roadmapa s prioritami a kroky seskupenými podle období",
-            "en": "A roadmap with priorities and steps grouped by period"
+            "cs": "Roadmapa s prioritami, s tím, kdo na ní pracuje, a s kroky podle období",
+            "en": "A roadmap with its priorities, who works on it and its steps grouped by period"
           }
         },
         {
-          "path": "docs/screenshots/mission-control-plan.webp",
+          "path": "docs/screenshots/cs/mission-control-plan.webp",
           "alt": {
-            "cs": "Detail plánu s jeho cílem, rozsahem a roadmapami, na kterých je",
-            "en": "A plan's detail with its goal, scope and the roadmaps it is on"
+            "cs": "Detail plánu s kontextem, cílovým stavem, rozsahem a roadmapami, na kterých je",
+            "en": "A plan's detail with its context, target state, scope and the roadmaps it is on"
           }
         },
         {
-          "path": "docs/screenshots/mission-control-draft.webp",
+          "path": "docs/screenshots/cs/mission-control-draft.webp",
           "alt": {
             "cs": "Koncept se změněnými záznamy před publikací",
             "en": "A draft with the changed records before publishing"
@@ -230,6 +363,26 @@
         }
       ],
       "releases": [
+        {
+          "version": "4.1.1",
+          "tag": "v4.1.1",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2026.11",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "fe5000722a308e6aa0f6786f1b93e4d508556038",
+          "artifactDigest": null
+        },
+        {
+          "version": "4.1.0",
+          "tag": "v4.1.0",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2026.11",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "38a7680a3e9f15516b67351e531538937f3a6a01",
+          "artifactDigest": null
+        },
         {
           "version": "4.0.0",
           "tag": "v4.0.0",
@@ -254,38 +407,38 @@
       "stone": "presentation",
       "pricing": "free",
       "summary": {
-        "cs": "Knihovna prezentací, které tvoříte se svým agentem.",
-        "en": "A library of presentations you create with your agent."
+        "cs": "Prezentace, které tvoříte se svým agentem z vlastních podkladů, česky i anglicky.",
+        "en": "Presentations you create with your agent from your own sources, in Czech and English."
       },
       "features": [
         {
           "title": {
-            "cs": "Knihovna",
-            "en": "Library"
+            "cs": "Slidy ze zdroje",
+            "en": "Slides from a source"
           },
           "text": {
-            "cs": "Všechny prezentace na jednom místě, u každé náhled prvního slidu a podklady, ze kterých vznikla.",
-            "en": "Every presentation in one place, with a preview of its first slide and the sources it was built from."
+            "cs": "Agent napíše prezentaci z vašich podkladů jako krátký strukturovaný soubor a jeden příkaz z něj sestaví slidy. Jedenáct typů slidů od titulního přes metriky s grafem po závěrečný.",
+            "en": "Your agent writes a presentation from your sources as a short structured file, and one command builds the slides. Eleven slide types, from the title through metrics with a chart to the closing."
           }
         },
         {
           "title": {
-            "cs": "Promítání a PDF",
-            "en": "Presenting and PDF"
+            "cs": "Promítání, video a PDF",
+            "en": "Presenting, video and PDF"
           },
           "text": {
-            "cs": "Slidy promítáte v prohlížeči a listujete jimi šipkami. Do PDF je vytisknete ve formátu 16:9.",
-            "en": "Present the slides in the browser and move through them with the arrow keys. Print them to 16:9 PDF pages."
+            "cs": "Slidy promítáte v prohlížeči na celou obrazovku a listujete šipkami nebo přejetím. Videa jsou místní soubory se zvukem jen na tlačítko; do PDF vytisknete stránku 16:9 na každý slide.",
+            "en": "Present the slides full screen in the browser and move through them with the arrow keys or a swipe. Videos are local files with sound only on their button; print one 16:9 PDF page per slide."
           }
         },
         {
           "title": {
-            "cs": "Tvorba s agentem",
-            "en": "Created with your agent"
+            "cs": "Osobní verze pro zájemce",
+            "en": "A personal version for each prospect"
           },
           "text": {
-            "cs": "Řekněte agentovi, komu je prezentace určená a z čeho má vycházet. Navrhne osnovu, připraví slidy z podkladů vaší Organizace a dá vám je ke kontrole.",
-            "en": "Tell the agent who the presentation is for and what it should draw on. It proposes an outline, drafts the slides from your Organization's sources and hands them to you for review."
+            "cs": "Odkaz se jménem zájemce a jeho organizace ukáže na titulním a závěrečném slidu „Připraveno pro …“. Nic se neukládá; odkaz sestavíte v detailu prezentace.",
+            "en": "A link with the prospect's name and organization shows “Prepared for …” on the title and closing slides. Nothing is stored; the presentation's detail builds the link."
           }
         }
       ],
@@ -297,51 +450,85 @@
           },
           "brief": {
             "cs": "prázdnou knihovnou (ukázkovou prezentaci nepřenášej)",
-            "en": "an empty library (do not carry the example presentation over)"
+            "en": "an empty library (do not carry the sample presentation over)"
           }
         },
         "sample": {
           "label": {
             "cs": "Ukázkovou prezentací",
-            "en": "An example presentation"
+            "en": "A sample presentation"
           },
           "brief": {
             "cs": "ukázkovou prezentací z vydání",
-            "en": "the example presentation from the release"
+            "en": "the sample presentation from the release"
           }
         }
       },
       "screenshots": [
         {
-          "path": "docs/screenshots/library.webp",
+          "path": "docs/screenshots/cs/library.webp",
           "alt": {
             "cs": "Knihovna s náhledem prvního slidu ukázkové prezentace",
-            "en": "The library with the first-slide preview of the example presentation"
+            "en": "The library with the first-slide preview of the sample presentation"
           }
         },
         {
-          "path": "docs/screenshots/detail.webp",
+          "path": "docs/screenshots/cs/detail.webp",
           "alt": {
-            "cs": "Detail prezentace s jejím účelem a podklady",
-            "en": "A presentation's detail with its purpose and sources"
+            "cs": "Detail prezentace s jejím cílem a osobní verzí pro zájemce",
+            "en": "A presentation's detail with its goal and a personal version for a prospect"
           }
         },
         {
-          "path": "docs/screenshots/agent-brief.webp",
+          "path": "docs/screenshots/cs/agent-brief.webp",
           "alt": {
             "cs": "Zadání pro agenta k nové prezentaci",
             "en": "The brief for your agent to create a presentation"
           }
         },
         {
-          "path": "docs/screenshots/slide.webp",
+          "path": "docs/screenshots/cs/slide-title.webp",
           "alt": {
-            "cs": "Slide ukázkové prezentace při promítání",
-            "en": "A slide of the example presentation while presenting"
+            "cs": "Titulní slide osobní verze se jménem zájemce",
+            "en": "The title slide of a personal version with the prospect's name"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/slide-metrics.webp",
+          "alt": {
+            "cs": "Slide s metrikami a grafem růstu",
+            "en": "A metrics slide with a growth chart"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/slide-video.webp",
+          "alt": {
+            "cs": "Slide s videem a tlačítky přehrávání",
+            "en": "A video slide with its playback buttons"
           }
         }
       ],
       "releases": [
+        {
+          "version": "0.2.0",
+          "tag": "v0.2.0",
+          "generation": "app/v1",
+          "stackProfile": "app@2026.11",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "2629dce5a7c3108bc88c2d1f3ec4f539356ac63f",
+          "artifactDigest": null
+        },
+        {
+          "version": "0.1.1",
+          "tag": "v0.1.1",
+          "generation": "app/v1",
+          "stackProfile": "app@2026.11",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "68f539df31ad46ac938ae71346e7b3b17cd5b525",
+          "artifactDigest": null
+        },
         {
           "version": "0.1.0",
           "tag": "v0.1.0",
@@ -350,6 +537,373 @@
           "stack": "vite-react",
           "bun": "1.4.4",
           "commit": "4b023772fbe45c2209b6eb1ff44009239ed1ac99",
+          "artifactDigest": null
+        }
+      ]
+    },
+    {
+      "schemaVersion": "lazurio.marketplace.offer.v1",
+      "id": "quotes",
+      "section": "app-templates",
+      "title": "Quotes",
+      "module": "quotes",
+      "repository": "LazurioTemplates/quotes",
+      "publisher": "LazurioTemplates",
+      "license": "MIT",
+      "stone": "deal",
+      "pricing": "free",
+      "summary": {
+        "cs": "Ceník a cenové nabídky pro zákazníky: DPH spočítané na haléř, verze, tisk do PDF a připravený e-mail.",
+        "en": "A price list and quotes for your customers: VAT to the haléř, versions, print to PDF and a ready e-mail."
+      },
+      "features": [
+        {
+          "title": {
+            "cs": "Ceník a import od dodavatele",
+            "en": "Price list and supplier imports"
+          },
+          "text": {
+            "cs": "Položky s nákupní a prodejní cenou bez DPH, sazbou DPH a historií cen. Ceník dodavatele z CSV projde náhledem nových, změněných a chybných řádků; zapíší se jen ty, které vyberete.",
+            "en": "Items with purchase and sale prices without VAT, a VAT rate and a price history. A supplier's CSV price list goes through a preview of new, changed and invalid rows; only the rows you choose are written."
+          }
+        },
+        {
+          "title": {
+            "cs": "Nabídky s verzemi",
+            "en": "Quotes with versions"
+          },
+          "text": {
+            "cs": "Řádky z ceníku i mimo něj, slevy na řádek i celou nabídku, DPH po sazbách a stavy od konceptu po přijetí. Odeslaná nabídka se už nemění; úprava je nová verze.",
+            "en": "Lines from the price list or outside it, discounts per line and on the whole quote, VAT per rate and states from draft to accepted. A quote that went out never changes; an edit is a new version."
+          }
+        },
+        {
+          "title": {
+            "cs": "Kontrola, tisk a e-mail",
+            "en": "Check, print and e-mail"
+          },
+          "text": {
+            "cs": "Před odesláním nabídka upozorní třeba na chybějící cenu, prošlou platnost nebo nízkou marži. Tiskovou stránku uložíte do PDF a text e-mailu je připravený; odeslat ho je vždy váš krok.",
+            "en": "Before sending, a quote points out a missing price, an expired validity or a low margin, for example. You save the print page as PDF and the e-mail text is ready; sending it is always your step."
+          }
+        },
+        {
+          "title": {
+            "cs": "Práce s agentem",
+            "en": "Work with your agent"
+          },
+          "text": {
+            "cs": "Agent připraví nabídku z poptávky, aktualizuje ceník podle dodavatele a zkontroluje nabídku před odesláním. Každá změna je nejdřív koncept, který publikujete jedním krokem.",
+            "en": "Your agent prepares a quote from an inquiry, updates the price list from a supplier's and checks a quote before it goes out. Every change is a draft first, which you publish in one step."
+          }
+        }
+      ],
+      "seeds": {
+        "empty": {
+          "label": {
+            "cs": "Bez ceníku a nabídek",
+            "en": "No price list or quotes"
+          },
+          "brief": {
+            "cs": "prázdnými daty (ukázkový ceník, zákazníky a nabídky nepřenášej)",
+            "en": "empty data (do not carry the example price list, customers and quotes over)"
+          }
+        },
+        "sample": {
+          "label": {
+            "cs": "S ukázkovými nabídkami",
+            "en": "With example quotes"
+          },
+          "brief": {
+            "cs": "ukázkovým ceníkem, zákazníky a nabídkami z vydání v mém jazyce",
+            "en": "the example price list, customers and quotes from the release, in my language"
+          }
+        }
+      },
+      "screenshots": [
+        {
+          "path": "docs/screenshots/cs/overview.webp",
+          "alt": {
+            "cs": "Přehled: nabídky čekající na odpověď, rozpracované koncepty a ceník",
+            "en": "The overview: quotes waiting for an answer, drafts and the price list"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/quote.webp",
+          "alt": {
+            "cs": "Odeslaná nabídka ve druhé verzi s řádky, slevou, DPH a marží",
+            "en": "A sent quote in its second version with its lines, a discount, VAT and the margin"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/editor.webp",
+          "alt": {
+            "cs": "Úprava konceptu nabídky se souhrnem DPH po sazbách",
+            "en": "Editing a draft quote with the VAT summary per rate"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/price-list.webp",
+          "alt": {
+            "cs": "Ceník s kategoriemi, nákupní a prodejní cenou a marží",
+            "en": "The price list with categories, purchase and sale prices and margins"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/import.webp",
+          "alt": {
+            "cs": "Náhled změn při importu ceníku dodavatele",
+            "en": "The preview of changes when importing a supplier's price list"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/print.webp",
+          "alt": {
+            "cs": "Tisková stránka nabídky pro uložení do PDF",
+            "en": "The print page of a quote, to save as PDF"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "version": "0.1.0",
+          "tag": "v0.1.0",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2026.11",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "e3fa43cfe1430e35d9466e621121ebe09ae54881",
+          "artifactDigest": null
+        }
+      ]
+    },
+    {
+      "schemaVersion": "lazurio.marketplace.offer.v1",
+      "id": "time-tracker",
+      "section": "app-templates",
+      "title": "Time Tracker",
+      "module": "time-tracker",
+      "repository": "LazurioTemplates/time-tracker",
+      "publisher": "LazurioTemplates",
+      "license": "MIT",
+      "stone": "profitability",
+      "pricing": "free",
+      "summary": {
+        "cs": "Odpracovaný čas na projektech: časovače, ruční záznamy, přehled týdne a měsíce a export pro fakturaci.",
+        "en": "Time worked on projects: timers, time written by hand, week and month overviews and exports for invoicing."
+      },
+      "features": [
+        {
+          "title": {
+            "cs": "Časovač i ruční zápis",
+            "en": "Timer and time by hand"
+          },
+          "text": {
+            "cs": "Spustíte a zastavíte svůj časovač, nebo zapíšete den, začátek a konec. Uživatel mění své záznamy, správce aplikace i záznamy ostatních; zapomenutý časovač se po deseti hodinách zastaví sám.",
+            "en": "Start and stop your timer, or write a day, a start and an end. A user changes their own entries, the App's administrator everyone's; a forgotten timer stops by itself after ten hours."
+          }
+        },
+        {
+          "title": {
+            "cs": "Přehled týdne a měsíce",
+            "en": "Week and month overview"
+          },
+          "text": {
+            "cs": "Hodiny celkem a k fakturaci po dnech, projektech, klientech a lidech, i pracovní dny, kdy nikdo nic nezapsal.",
+            "en": "Hours in total and to invoice by day, project, client and person, and the working days nobody recorded."
+          }
+        },
+        {
+          "title": {
+            "cs": "Export pro fakturaci a mzdy",
+            "en": "Export for invoicing and payroll"
+          },
+          "text": {
+            "cs": "Záznamy i souhrn hodin podle klienta, projektu a člověka jako CSV, které tabulkový procesor otevře hned.",
+            "en": "Entries and hours by client, project and person as a CSV your spreadsheet opens as it is."
+          }
+        }
+      ],
+      "seeds": {
+        "empty": {
+          "label": {
+            "cs": "Bez záznamů",
+            "en": "No entries"
+          },
+          "brief": {
+            "cs": "prázdnými daty (ukázkové klienty, projekty a záznamy nepřenášej)",
+            "en": "empty data (do not carry the example clients, projects and entries over)"
+          }
+        },
+        "sample": {
+          "label": {
+            "cs": "S ukázkovými záznamy",
+            "en": "With example entries"
+          },
+          "brief": {
+            "cs": "ukázkovými klienty, projekty a záznamy z vydání v jazyce Organizace",
+            "en": "the example clients, projects and entries of the release in the Organization's language"
+          }
+        }
+      },
+      "screenshots": [
+        {
+          "path": "docs/screenshots/cs/time-tracker-today.webp",
+          "alt": {
+            "cs": "Dnes: běžící časovač, ruční zápis času a záznamy týdne",
+            "en": "Today: the running timer, time written by hand and the week's entries"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/time-tracker-overview.webp",
+          "alt": {
+            "cs": "Přehled týdne: hodiny celkem a k fakturaci, hodiny po dnech a dny bez záznamu",
+            "en": "The week's overview: hours in total and to invoice, hours by day and the days without entries"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/time-tracker-entries.webp",
+          "alt": {
+            "cs": "Záznamy celého týmu s filtry a exportem do CSV",
+            "en": "The whole team's entries with filters and the CSV export"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/time-tracker-draft.webp",
+          "alt": {
+            "cs": "Koncept se změněnými záznamy před publikací",
+            "en": "A draft with the changed entries before publishing"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "version": "0.1.0",
+          "tag": "v0.1.0",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2026.11",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "73e1caa54eecdaacd7e3606a845c2f0d8813dc04",
+          "artifactDigest": null
+        }
+      ]
+    },
+    {
+      "schemaVersion": "lazurio.marketplace.offer.v1",
+      "id": "website",
+      "section": "app-templates",
+      "title": "Website",
+      "module": "website",
+      "repository": "LazurioTemplates/website",
+      "publisher": "LazurioTemplates",
+      "license": "MIT",
+      "stone": "website",
+      "pricing": "free",
+      "summary": {
+        "cs": "Web vaší firmy: stránky, služby, aktuality a kontakty, které upravujete vy i váš agent.",
+        "en": "Your company's website: pages, services, news and contacts that you and your agent edit."
+      },
+      "features": [
+        {
+          "title": {
+            "cs": "Stránky, služby, aktuality",
+            "en": "Pages, services, news"
+          },
+          "text": {
+            "cs": "Úvodní stránka, služby s cenami, aktuality a kontakty. Obsah leží v souborech, které upravíte bez programování.",
+            "en": "A home page, services with prices, news and contacts. The content lies in files you change without programming."
+          }
+        },
+        {
+          "title": {
+            "cs": "Úpravy s agentem",
+            "en": "Edited with your agent"
+          },
+          "text": {
+            "cs": "Napište ‚oprav tuhle větu‘ nebo ‚napiš aktualitu‘. Agent ví, kde text leží, ukáže výsledek v prohlížeči a připraví změnu ke schválení.",
+            "en": "Write ‘fix this sentence’ or ‘write a news item’. Your agent knows where the text lies, shows the result in a browser and prepares the change for your approval."
+          }
+        },
+        {
+          "title": {
+            "cs": "Rychlý a dohledatelný",
+            "en": "Fast and findable"
+          },
+          "text": {
+            "cs": "Statické stránky, popisy pro vyhledávače a náhledy odkazů, mapa webu, přístupnost a vzhled z vašeho Design Systemu.",
+            "en": "Static pages, descriptions for search engines and link previews, a sitemap, accessibility and the look of your Design System."
+          }
+        }
+      ],
+      "seeds": {
+        "empty": {
+          "label": {
+            "cs": "Vlastním obsahem",
+            "en": "Your own content"
+          },
+          "brief": {
+            "cs": "vlastním obsahem mé Organizace (ukázkový web firmy Example nepřenášej)",
+            "en": "my Organization's own content (do not carry the Example website over)"
+          }
+        },
+        "sample": {
+          "label": {
+            "cs": "Ukázkovým webem",
+            "en": "The example website"
+          },
+          "brief": {
+            "cs": "ukázkovým webem vymyšlené firmy Example z vydání",
+            "en": "the example website of the invented company Example from the release"
+          }
+        }
+      },
+      "screenshots": [
+        {
+          "path": "docs/screenshots/cs/home.webp",
+          "alt": {
+            "cs": "Úvodní stránka ukázkového webu vymyšlené firmy Example",
+            "en": "The home page of the example website of the invented company Example"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/services.webp",
+          "alt": {
+            "cs": "Přehled služeb s cenami",
+            "en": "The overview of services with their prices"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/service.webp",
+          "alt": {
+            "cs": "Stránka služby s cenou, tím, co zákazník dostane, a jak spolupráce probíhá",
+            "en": "A service's page with its price, what the customer gets and how the work goes"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/news.webp",
+          "alt": {
+            "cs": "Aktualita s grafem",
+            "en": "A news item with a chart"
+          }
+        },
+        {
+          "path": "docs/screenshots/cs/contact.webp",
+          "alt": {
+            "cs": "Kontakty v tmavém režimu s adresou, e-mailem, telefonem a lidmi, se kterými mluvit",
+            "en": "The contact page in dark mode with the address, e-mail, phone and the people to talk to"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "version": "0.1.0",
+          "tag": "v0.1.0",
+          "generation": "app/v2",
+          "stackProfile": "content@2026.11",
+          "stack": "astro",
+          "bun": "1.4.4",
+          "commit": "ce9e9e66bbdcab717779ad40af21969cf2473691",
           "artifactDigest": null
         }
       ]
