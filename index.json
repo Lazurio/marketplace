@@ -699,8 +699,8 @@
             "en": "Timer and time by hand"
           },
           "text": {
-            "cs": "Spustíte a zastavíte svůj časovač, nebo zapíšete den, začátek a konec. Každý mění jen své záznamy; zapomenutý časovač se po deseti hodinách zastaví sám.",
-            "en": "Start and stop your timer, or write a day, a start and an end. Everyone changes only their own entries; a forgotten timer stops by itself after ten hours."
+            "cs": "Spustíte a zastavíte svůj časovač, nebo zapíšete den, začátek a konec. Uživatel mění své záznamy, správce aplikace i záznamy ostatních; zapomenutý časovač se po deseti hodinách zastaví sám.",
+            "en": "Start and stop your timer, or write a day, a start and an end. A user changes their own entries, the App's administrator everyone's; a forgotten timer stops by itself after ten hours."
           }
         },
         {
