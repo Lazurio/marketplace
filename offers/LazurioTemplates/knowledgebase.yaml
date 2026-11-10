@@ -1,0 +1,85 @@
+# Knowledgebase, a template of the Marketplace (plan DEV-6593), published by
+# LazurioTemplates. Release 0.1.0 was published on 2026-11-09 as the annotated
+# tag v0.1.0. One set of screens without a locale until the Lazurio release
+# that reads locale (v0.1.21, LazurioPlatform#908).
+schemaVersion: lazurio.marketplace.offer.v1
+id: knowledgebase
+section: app-templates
+title: Knowledgebase
+module: knowledgebase
+repository: LazurioTemplates/knowledgebase
+publisher: LazurioTemplates
+license: MIT
+stone: knowledge
+pricing: free
+summary:
+  cs: Postupy, znalosti, slovník a rozhodnutí vaší Organizace na jednom místě, pro lidi i agenty.
+  en: Your Organization's procedures, knowledge, glossary and decisions in one place, for people and agents.
+features:
+  - title:
+      cs: Postupy, slovník a rozhodnutí
+      en: Procedures, glossary and decisions
+    text:
+      cs: Oddíly O Organizaci, Lidé a role, Procesy a postupy, Postupy pro agenty, Slovník a Rozhodnutí. Každý oddíl má přehled s tím, co do něj patří, a osnovou stránky.
+      en: Sections About the Organization, People and roles, Processes and procedures, Procedures for agents, Glossary and Decisions. Each has an overview with what belongs there and the outline of a page.
+  - title:
+      cs: Agent hledá, než odpoví
+      en: Your agent searches before it answers
+    text:
+      cs: Než agent odpoví, jak to ve vaší Organizaci chodí, hledá v Knowledgebase a uvede stránku. Na ‚zapiš postup‘, ‚zapiš rozhodnutí‘ nebo ‚doplň slovník‘ připraví stránku podle osnovy a dá vám ji ke kontrole.
+      en: Before your agent answers how your Organization works, it searches the knowledge base and names the page. Asked to write a procedure, record a decision or add a term, it drafts the page from the outline for your review.
+  - title:
+      cs: Ověřené a snadno k nalezení
+      en: Trusted and easy to find
+    text:
+      cs: U každé stránky vidíte, jestli platí, kdo za ni odpovídá a kdy byla naposledy ověřena. Hledání projde všechny stránky včetně jiných názvů pojmů; vzhled dává design system vaší Organizace.
+      en: Every page shows whether it is valid, who keeps it true and when it was last confirmed. Search covers every page, including the other names of terms; the look comes from your Organization's design system.
+seeds:
+  empty:
+    label:
+      cs: Prázdnou, jen strukturou
+      en: Empty, structure only
+    brief:
+      cs: prázdnou Knowledgebase jen se strukturou oddílů (ukázku Example nepřenášej)
+      en: an empty knowledge base with the structure of its sections only (do not carry the Example sample over)
+  sample:
+    label:
+      cs: S ukázkou Example
+      en: With the Example sample
+    brief:
+      cs: ukázkou vymyšlené Organizace Example z vydání
+      en: the sample of the invented Organization Example from the release
+screenshots:
+  - path: docs/screenshots/cs/procedure.webp
+    alt:
+      cs: Postup s jeho údaji (platí, kdo odpovídá, kdy byl ověřen, zdroje) a navigací oddílů
+      en: A procedure with its details (valid, owner, last confirmed, sources) and the navigation of the sections
+  - path: docs/screenshots/cs/home.webp
+    alt:
+      cs: Úvodní stránka s oddíly a s tím, jak hledat a jak něco přidat
+      en: The home page with the sections, how to search and how to add something
+  - path: docs/screenshots/cs/agent-procedure-outline.webp
+    alt:
+      cs: Oddíl Postupy pro agenty s osnovou stránky
+      en: The section Procedures for agents with the outline of a page
+  - path: docs/screenshots/cs/decision.webp
+    alt:
+      cs: Číslované rozhodnutí s tím, kdo a kdy rozhodl, souvislostmi a důsledky
+      en: A numbered decision with who decided and when, its context and its consequences
+  - path: docs/screenshots/cs/glossary-dark.webp
+    alt:
+      cs: Pojem ve slovníku s jeho jinými názvy, v tmavém režimu
+      en: A glossary term with its other names, in dark mode
+  - path: docs/screenshots/cs/search.webp
+    alt:
+      cs: Hledání, které najde pojem i podle jeho jiného názvu
+      en: Search that finds a term by its other name too
+releases:
+  - version: 0.1.0
+    tag: v0.1.0
+    generation: app/v2
+    stackProfile: content@2026.11
+    stack: astro-starlight
+    bun: 1.4.4
+    commit: 342140764dfe93381b21f6b326b368bb40a5206f
+    artifactDigest: null
