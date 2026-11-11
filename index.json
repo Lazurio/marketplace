@@ -364,6 +364,16 @@
       ],
       "releases": [
         {
+          "version": "4.1.2",
+          "tag": "v4.1.2",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2026.11",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "42141bbd3d59f05e1de950530f68119eecd6736e",
+          "artifactDigest": null
+        },
+        {
           "version": "4.1.1",
           "tag": "v4.1.1",
           "generation": "app/v3",
