@@ -520,6 +520,16 @@
       ],
       "releases": [
         {
+          "version": "0.2.1",
+          "tag": "v0.2.1",
+          "generation": "app/v1",
+          "stackProfile": "app@2026.11",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "764b3d693479d05623c0cb65593532c3223e5779",
+          "artifactDigest": null
+        },
+        {
           "version": "0.2.0",
           "tag": "v0.2.0",
           "generation": "app/v1",

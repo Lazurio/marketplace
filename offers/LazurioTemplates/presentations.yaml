@@ -1,8 +1,9 @@
 # Presentations, the pilot offer Lazurio carried in its own code (plan DEV-6593),
 # the third template of the Marketplace. It moved from TemplatesRozjedeme-ai with a
 # clean history and is published by LazurioTemplates (decided 2026-11-03).
-# Release 0.1.0 was published on 2026-11-03, 0.1.1 on 2026-11-08 and 0.2.0 on
-# 2026-11-10, each as an annotated tag. The card follows 0.2.0; its screens per
+# Release 0.1.0 was published on 2026-11-03, 0.1.1 on 2026-11-08, 0.2.0 on
+# 2026-11-10 and 0.2.1 on 2026-11-12, each as an annotated tag. The card follows
+# 0.2.1, with the screens of 0.2.0, which did not change; its screens per
 # language wait for the Lazurio release that reads locale (v0.1.21,
 # LazurioPlatform#908), until then the Czech set without one.
 schemaVersion: lazurio.marketplace.offer.v1
@@ -78,6 +79,14 @@ screenshots:
       cs: Slide s videem a tlačítky přehrávání
       en: A video slide with its playback buttons
 releases:
+  - version: 0.2.1
+    tag: v0.2.1
+    generation: app/v1
+    stackProfile: app@2026.11
+    stack: vite-react
+    bun: 1.4.4
+    commit: 764b3d693479d05623c0cb65593532c3223e5779
+    artifactDigest: null
   - version: 0.2.0
     tag: v0.2.0
     generation: app/v1
