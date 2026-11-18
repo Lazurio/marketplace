@@ -75,6 +75,14 @@ screenshots:
       cs: Hledání, které najde pojem i podle jeho jiného názvu
       en: Search that finds a term by its other name too
 releases:
+  - version: 0.2.0
+    tag: v0.2.0
+    generation: app/v2
+    stackProfile: content@2026.12
+    stack: astro-starlight
+    bun: 1.4.4
+    commit: 6470e1b3e3f271c8c6571aea0d39c97213f9d76e
+    artifactDigest: null
   - version: 0.1.0
     tag: v0.1.0
     generation: app/v2
