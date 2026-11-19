@@ -67,6 +67,14 @@ screenshots:
       cs: Koncept se změněnými záznamy před publikací
       en: A draft with the changed entries before publishing
 releases:
+  - version: 0.2.1
+    tag: v0.2.1
+    generation: app/v3
+    stackProfile: app-data@2026.12
+    stack: vite-react
+    bun: 1.4.4
+    commit: 56a89c863fa67cd8a9aeebd88a478b121c135130
+    artifactDigest: null
   - version: 0.2.0
     tag: v0.2.0
     generation: app/v3
