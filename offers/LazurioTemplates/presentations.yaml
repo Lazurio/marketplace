@@ -79,6 +79,14 @@ screenshots:
       cs: Slide s videem a tlačítky přehrávání
       en: A video slide with its playback buttons
 releases:
+  - version: 0.3.1
+    tag: v0.3.1
+    generation: app/v1
+    stackProfile: app@2026.12
+    stack: vite-react
+    bun: 1.4.4
+    commit: 26628dc4de4f6f8567d2b343b8c740f8024862b7
+    artifactDigest: null
   - version: 0.3.0
     tag: v0.3.0
     generation: app/v1
