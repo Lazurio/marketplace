@@ -1,0 +1,88 @@
+# Deals, a template of the Marketplace, published by
+# LazurioTemplates. Release 0.1.0 was published on 2026-11-25 as the annotated
+# tag v0.1.0. Its Czech name (Obchodní případy) and screens with a locale wait
+# for the Lazurio release that reads them (v0.1.21, LazurioPlatform#908), as
+# for the other offers; until then one name and the Czech set without a locale.
+schemaVersion: lazurio.marketplace.offer.v1
+id: deals
+section: app-templates
+title: Deals
+module: deals
+repository: LazurioTemplates/deals
+publisher: LazurioTemplates
+license: MIT
+stone: deal
+pricing: free
+summary:
+  cs: "Obchodní případy ve fázích, které si nastavíte: firmy a kontakty, aktivity, vážený výhled po měsících a výsledky za období."
+  en: "Deals in the stages you set: companies and contacts, activities, a weighted forecast by month and the results of a period."
+features:
+  - title:
+      cs: Pipeline podle vás
+      en: Your own pipeline
+    text:
+      cs: Fáze, jejich pořadí a pravděpodobnost nastavíte sami. Případ přesunete z karty nebo ze stránky; vyhraný potřebuje hodnotu a datum, ztracený důvod z vašeho seznamu.
+      en: You set the stages, their order and probability. A deal moves from its card or its page; a won one needs a value and a date, a lost one a reason from your list.
+  - title:
+      cs: Firmy, kontakty a aktivity
+      en: Companies, contacts and activities
+    text:
+      cs: Případ patří firmě a jejím kontaktům. Českou firmu doplníte z rejstříku ARES, když ho zapnete. Hovory, schůzky, e-maily, poznámky a úkoly máte u případu.
+      en: A deal belongs to a company and its contacts. A Czech company is filled in from the ARES register when you turn it on. Calls, meetings, e-mails, notes and tasks stay with the deal.
+  - title:
+      cs: Výhled a výsledky
+      en: Forecast and results
+    text:
+      cs: Hodnota otevřených případů násobená pravděpodobností po měsících očekávaného uzavření, a za zvolené období úspěšnost, průměrná výhra, délka obchodu a ztráty podle důvodu.
+      en: The value of open deals times their probability by the month they are expected to close, and for a period the win rate, the average win, the length of a sale and losses by reason.
+  - title:
+      cs: Práce s agentem
+      en: Work with your agent
+    text:
+      cs: Agent založí případ ze zprávy, připraví týdenní přehled a uzavře případ. Každá změna je nejdřív koncept; zveřejní se jen to, co jste viděli a schválili.
+      en: Your agent creates a deal from a message, prepares the week's review and closes a deal. Every change is a draft first; only what you saw and approved is published.
+seeds:
+  empty:
+    label:
+      cs: Bez případů
+      en: No deals
+    brief:
+      cs: prázdnými daty a výchozím nastavením fází (ukázkové firmy, kontakty a případy nepřenášej)
+      en: empty data and the default stages (do not carry the example companies, contacts and deals over)
+  sample:
+    label:
+      cs: S ukázkovými případy
+      en: With example deals
+    brief:
+      cs: ukázkovými firmami, kontakty, případy a aktivitami z vydání v mém jazyce
+      en: the example companies, contacts, deals and activities from the release, in my language
+screenshots:
+  - path: docs/screenshots/cs/overview.webp
+    alt:
+      cs: "Přehled: otevřené případy po fázích, vážený výhled po měsících a výsledky za období"
+      en: "The overview: open deals by stage, the weighted forecast by month and the results of a period"
+  - path: docs/screenshots/cs/deals.webp
+    alt:
+      cs: Seznam obchodních případů se záložkami všechny, otevřené, vyhrané a ztracené
+      en: The list of deals with the tabs all, open, won and lost
+  - path: docs/screenshots/cs/deal.webp
+    alt:
+      cs: Obchodní případ s firmou, kontakty, hodnotou, fází a aktivitami
+      en: A deal with its company, contacts, value, stage and activities
+  - path: docs/screenshots/cs/company.webp
+    alt:
+      cs: Firma s adresou, jejími kontakty a případy
+      en: A company with its address, its contacts and deals
+  - path: docs/screenshots/cs/settings.webp
+    alt:
+      cs: Nastavení fází, důvodů ztráty, měny a obchodníků
+      en: The settings of stages, loss reasons, the currency and salespeople
+releases:
+  - version: 0.1.0
+    tag: v0.1.0
+    generation: app/v3
+    stackProfile: app-data@2027.03
+    stack: vite-react
+    bun: 1.4.4
+    commit: eacace7e597f317dd559d366a40b15516db3fb94
+    artifactDigest: null
