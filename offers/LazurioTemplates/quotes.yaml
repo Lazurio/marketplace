@@ -81,6 +81,14 @@ screenshots:
       cs: Tisková stránka nabídky pro uložení do PDF
       en: The print page of a quote, to save as PDF
 releases:
+  - version: 0.3.0
+    tag: v0.3.0
+    generation: app/v3
+    stackProfile: app-data@2027.03
+    stack: vite-react
+    bun: 1.4.4
+    commit: f96e413e38a63177c967fda9f137cb9245d981a7
+    artifactDigest: null
   - version: 0.2.0
     tag: v0.2.0
     generation: app/v3
