@@ -119,6 +119,16 @@
       ],
       "releases": [
         {
+          "version": "0.1.2",
+          "tag": "v0.1.2",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2027.03",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "37d72dd38a6a4103e509366ea13c4547a9f35fd3",
+          "artifactDigest": null
+        },
+        {
           "version": "0.1.1",
           "tag": "v0.1.1",
           "generation": "app/v3",
@@ -924,6 +934,16 @@
         }
       ],
       "releases": [
+        {
+          "version": "0.3.2",
+          "tag": "v0.3.2",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2027.03",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "6429e44a22333dc86fcd2a1faef712c512eaf6f4",
+          "artifactDigest": null
+        },
         {
           "version": "0.3.1",
           "tag": "v0.3.1",
