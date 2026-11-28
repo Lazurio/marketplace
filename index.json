@@ -126,6 +126,16 @@
       ],
       "releases": [
         {
+          "version": "0.3.0",
+          "tag": "v0.3.0",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2027.03",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "f33c6cdf5f0cc189527832cc13baf1520b941a33",
+          "artifactDigest": null
+        },
+        {
           "version": "0.2.0",
           "tag": "v0.2.0",
           "generation": "app/v3",
