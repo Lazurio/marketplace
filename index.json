@@ -43,8 +43,8 @@
             "en": "Forecast and statistics"
           },
           "text": {
-            "cs": "Vyhraný případ rozdělíte na platby po měsících; forecast ukazuje, co je vyfakturované, zaplacené a po splatnosti, po obchodnících, typech zakázek a fakturačních firmách. Statistiky srovnávají období s předchozím.",
-            "en": "A won deal is split into payments by month; the forecast shows what is invoiced, paid and overdue, by salesperson, deal type and billing entity. The statistics compare a period with the one before."
+            "cs": "Vyhraný případ rozdělíte na platby po měsících; sloupcový graf forecastu ukazuje, co je zaplacené, vyfakturované, po splatnosti a jen plánované, po obchodnících, typech zakázek a fakturačních firmách. Statistiky srovnávají období s předchozím.",
+            "en": "A won deal is split into payments by month; the forecast's column chart shows what is paid, invoiced, overdue and only planned, by salesperson, deal type and billing entity. The statistics compare a period with the one before."
           }
         },
         {
@@ -91,8 +91,8 @@
         {
           "path": "docs/screenshots/cs/deals.webp",
           "alt": {
-            "cs": "Aktivní obchodní případy s dlaždicemi, filtry a seznamem",
-            "en": "Active deals with tiles, filters and the list"
+            "cs": "Všechny obchodní případy s dlaždicemi, filtry a fázemi jako barevnými štítky",
+            "en": "All deals with tiles, filters and the stages as tinted pills"
           }
         },
         {
@@ -112,8 +112,8 @@
         {
           "path": "docs/screenshots/cs/forecast.webp",
           "alt": {
-            "cs": "Forecast plánu plateb po měsících a kvartálech",
-            "en": "The forecast of payment plans by month and quarter"
+            "cs": "Forecast plánu plateb jako sloupcový graf po měsících a kvartálech",
+            "en": "The forecast of payment plans as a column chart by month and quarter"
           }
         },
         {
@@ -125,6 +125,16 @@
         }
       ],
       "releases": [
+        {
+          "version": "0.3.0",
+          "tag": "v0.3.0",
+          "generation": "app/v3",
+          "stackProfile": "app-data@2027.03",
+          "stack": "vite-react",
+          "bun": "1.4.4",
+          "commit": "f33c6cdf5f0cc189527832cc13baf1520b941a33",
+          "artifactDigest": null
+        },
         {
           "version": "0.2.0",
           "tag": "v0.2.0",
