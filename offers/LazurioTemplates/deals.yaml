@@ -1,7 +1,8 @@
 # Deals, a template of the Marketplace, published by
 # LazurioTemplates. Release 0.1.0 was published on 2026-11-25 as the annotated
 # tag v0.1.0; 0.2.0 (quotes, payment-plan forecast, statistics) on
-# 2026-11-26 as v0.2.0. Its Czech name (Obchodní případy) and screens with a
+# 2026-11-26 as v0.2.0; 0.3.0 (a quieter, denser look and UX fixes, the same
+# data) on 2026-11-28 as v0.3.0. Its Czech name (Obchodní případy) and screens with a
 # locale wait for the Lazurio release that reads them (v0.1.21,
 # LazurioPlatform#908), as
 # for the other offers; until then one name and the Czech set without a locale.
@@ -35,8 +36,8 @@ features:
       cs: Forecast a statistiky
       en: Forecast and statistics
     text:
-      cs: Vyhraný případ rozdělíte na platby po měsících; forecast ukazuje, co je vyfakturované, zaplacené a po splatnosti, po obchodnících, typech zakázek a fakturačních firmách. Statistiky srovnávají období s předchozím.
-      en: A won deal is split into payments by month; the forecast shows what is invoiced, paid and overdue, by salesperson, deal type and billing entity. The statistics compare a period with the one before.
+      cs: Vyhraný případ rozdělíte na platby po měsících; sloupcový graf forecastu ukazuje, co je zaplacené, vyfakturované, po splatnosti a jen plánované, po obchodnících, typech zakázek a fakturačních firmách. Statistiky srovnávají období s předchozím.
+      en: A won deal is split into payments by month; the forecast's column chart shows what is paid, invoiced, overdue and only planned, by salesperson, deal type and billing entity. The statistics compare a period with the one before.
   - title:
       cs: Práce s agentem
       en: Work with your agent
@@ -65,8 +66,8 @@ screenshots:
       en: "The overview: this month's forecast, what is on the way and overdue, the open pipeline by stage"
   - path: docs/screenshots/cs/deals.webp
     alt:
-      cs: Aktivní obchodní případy s dlaždicemi, filtry a seznamem
-      en: Active deals with tiles, filters and the list
+      cs: Všechny obchodní případy s dlaždicemi, filtry a fázemi jako barevnými štítky
+      en: All deals with tiles, filters and the stages as tinted pills
   - path: docs/screenshots/cs/deal.webp
     alt:
       cs: Vyhraný případ s plánem plateb a schválenou nabídkou
@@ -77,8 +78,8 @@ screenshots:
       en: The quote editor with its summary and VAT
   - path: docs/screenshots/cs/forecast.webp
     alt:
-      cs: Forecast plánu plateb po měsících a kvartálech
-      en: The forecast of payment plans by month and quarter
+      cs: Forecast plánu plateb jako sloupcový graf po měsících a kvartálech
+      en: The forecast of payment plans as a column chart by month and quarter
   - path: docs/screenshots/cs/stats.webp
     alt:
       cs: Statistiky se srovnáním s předchozím obdobím a žebříčkem obchodníků
